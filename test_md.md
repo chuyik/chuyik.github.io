@@ -5,7 +5,7 @@
     ```
 
     * 把 Capybara DSL 加入 RSpec 帮助文件
-      *spec/spec_helper.rb*
+      * _spec/spec_helper.rb_
     ```
     RSpec.configure do |config|
       ...
