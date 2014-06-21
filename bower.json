@@ -1,0 +1,33 @@
+{
+  "name": "jekyll-foundation-sass-compass",
+  "version": "0.0.1",
+  "homepage": "https://github.com/chuyik/chuyik.github.io",
+  "authors": [
+    "chuyik <crazyzyt@gmail.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "jekyll",
+    "foundation",
+    "sass",
+    "compass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/bower_components",
+    ".sass-cache",
+    "test",
+    "tests",
+    "_site",
+    "node_modules"
+  ],
+  "dependencies": {
+    "foundation": ">= 5.0.0",
+    "requirejs": ">= 2.1.14"
+  }
+}

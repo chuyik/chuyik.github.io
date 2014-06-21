@@ -18,3 +18,15 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+<!-- alert boxes div from foundation -->
+<div data-alert class="alert-box success radius" style="display:none;">
+  Init Success..!
+  <a href="#" class="close">&times;</a>
+</div>
+
+<script type="text/javascript">
+  require(['js/app.min'], function (app){
+　　app.init();
+　});
+</script>
