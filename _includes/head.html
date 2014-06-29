@@ -1,25 +1,26 @@
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE8">
+    <meta http-equiv="X-UA-Compatible" content="edge">
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="{{ site.description }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Prociono' rel='stylesheet' type='text/css'> -->
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ "assets/css/app.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/assets/css/app.css" | prepend: site.baseurl }}">
 
     <!-- JS Files -->
-    <script src="{{ "assets/bower_components/requirejs/require.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/assets/bower_components/requirejs/require.js" | prepend: site.baseurl }}"></script>
 
-	<!--[if lt IE 9]><script type="text/javascript">alert("Sorry, obsolete browsers are not supported, and the page may display incorrectly.")</script><![endif]-->
+	  <!--[if lt IE 9]><script type="text/javascript"></script><![endif]-->
 
     <!-- liverload by grunt watch -->
     <script src="http://localhost:35729/livereload.js"></script>
 
     <script type="text/javascript">
         require.config({
-          baseUrl: 'assets/bower_components',
+          baseUrl: '/assets/bower_components',
           　paths: {　　　
               // js files
               'jquery': 'jquery/dist/jquery.min',
@@ -34,6 +35,9 @@
           shim: {
             'foundation': {
               deps: ['jquery', 'modernizr']
+            },
+            'foundation-plugin/foundation.magellan': {
+              deps: ['jquery', 'foundation']
             }
           }　　
         });

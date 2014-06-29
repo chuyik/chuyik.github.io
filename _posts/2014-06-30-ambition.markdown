@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "Ambition"
+date:   2014-06-30 00:47:15
+categories: plan
+---
+
+学习目标
+
+<!--more-->
+
+# 前端学习
+* Angular JS
+	- [official](https://www.youtube.com/watch?v=i9MHigUZKEM&utm_source=feweekly&utm_campaign=issue14&utm_medium=web)
+	- [egghead.io或者百度网盘](http://www.youku.com/playlist_show/id_19121683.html)
+	- [kittencup](http://www.kittencup.com/angularjs-%E4%B8%AD%E6%96%87%E5%85%8D%E8%B4%B9%E8%B6%85%E6%B8%85%E8%A7%86%E9%A2%91%E7%9B%AE%E5%BD%95/])
+	- [ng-book](http://pan.baidu.com/)
+* PhoneGap
+	- 初始化开发环境（下载安卓SDK）
+	- 等待“建立应用”完成
+* Sencha/JQuery Mobile/JQTouch
+	- 简单HelloWorld
+* WebWorker/Websocket
+	- 简单HelloWorld
+* Javascript高级书籍（延后）
+
+---
+
+# 英语加强
+* 口语
+	- 英语中级口语
+	- [新托福听说训练](http://wordpress.lixiaolai.com/archives/category/everyone-can-use-english/toefl-listening-and-speaking)
+	- [李笑来老师托福185篇范文](http://home.xdf.cn/thread-262193-1-1.html)
+* 阅读
+	- 新托福iBT词汇分类突破，背三遍
+	- 剑桥中级英语语法
+		+ 坚持做三遍，每天两个单元（目标：30分钟）
+	- [TOEFL iBT – 新托福词汇专题突破](http://wordpress.lixiaolai.com/archives/3628.html)
+* 听力
+	- 新托福听说训练（系列，共12篇）
+	- _Unknown_
+* 写作
+	- Thought and Knowledge: An Introduction to Critical Thinking 4th Edition by Diane F.Halpern
+	- A Plain English Handbook
+	- Building Great Senetences(Video Tutorial)
+
+---
+
+# 健身锻炼
+* 无器械健身
+	- 基础健身计划
+		+ 每周四次，每次15分钟
+
+---
+
+# Web建站
+* Rails Tutorial
+	- 看完教程
+	- 将应用部署至Heroku
+* Web 开发敏捷之道
+	- 跟着书本建立应用
+	- 将应用部署至Heroku
+
+---
+
+# 建立应用
+* 云同步目标达成应用
+	- 构思目的，功能
+	- 选择技术
+	- 低保真构图
+	- 功能实现
+	- 润色
+	- 发布
+
+---
+
+# 研究硬件（延后）
+* Raspberry Pi
+	- 购买设备
+	- 简单入门
+	- 实现点击按钮即播报当天天气和提醒是否需要带伞
+
+---
+
+# 待定
+* Processing

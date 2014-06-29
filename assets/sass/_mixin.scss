@@ -1,0 +1,49 @@
+@import "compass/css3/text-shadow";
+
+/* mixin for animation */
+.play-animate {
+  -webkit-animation-play-state: running !important;
+  animation-play-state: running !important;
+}
+
+.stop-animate {
+  -webkit-animation-duration: 0s !important;
+  animation-duration: 0s !important;
+  -webkit-animation-delay: 0s !important;
+  animation-delay: 0s !important;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+
+@mixin isAnimate ($flag) {
+  @if $flag {
+    @extend .play-animate;
+  }
+  @else {
+    @extend .stop-animate;
+  }
+}
+
+@mixin animation($args...) {
+    -webkit-animation: $args;
+    animation: $args;
+    // -moz-animation: $animate;
+    // -o-animation: $animate;
+}

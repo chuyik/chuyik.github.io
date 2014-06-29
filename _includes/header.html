@@ -3,6 +3,7 @@
   <div class="wrap">
 
     <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <div class="back-label"><span>Back Home</span></div>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -17,9 +18,12 @@
         </svg>
       </a>
       <div class="trigger">
-        {% for page in site.pages %}
+        <a class="page-link" href="{{ "/categories" | prepend: site.baseurl }}">Categories</a>
+        <a class="page-link" href="{{ "/feed.xml" | prepend: site.baseurl }}" target="blank">RSS</a>
+        <a class="page-link" href="{{ "/about" | prepend: site.baseurl }}">About</a>
+        <!-- {% for page in site.pages %}
           <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-        {% endfor %}
+        {% endfor %} -->
       </div>
     </nav>
 
