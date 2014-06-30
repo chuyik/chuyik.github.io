@@ -28,7 +28,7 @@ define(['jquery', 'foundation', 'foundation-plugin/foundation.magellan'], functi
 	    }, function(){
 	    	$('.back-label').css('display', 'none');
 	    });
-	}
+	};
 	return {
 		initIndex : initIndex,
 		initPost : initPost
