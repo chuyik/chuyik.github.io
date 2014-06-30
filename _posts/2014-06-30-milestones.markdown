@@ -36,13 +36,13 @@ categories: plan
 # 任务安排
 * 7月：
 	- 前端学习: Angular JS
-	- 英语加强: 口语
+	- 英语加强: 阅读
 	- Web建站 : Rails Tutorial
 	- 健身锻炼：基础（阶梯组、间隔组）
 
 * 8月：
 	- 前端学习: PhoneGap、Sencha等、Webworker/Websocket
-	- 英语加强: 阅读
+	- 英语加强: 口语
 	- Web建站 : Web 开发敏捷之道
 	- 建立应用: 选择技术、低保真构图
 	- 健身锻炼：基础（超级组）
