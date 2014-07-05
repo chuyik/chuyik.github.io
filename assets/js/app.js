@@ -13,14 +13,14 @@ define(['jquery', 'foundation', 'foundation-plugin/foundation.magellan'], functi
 
 	var initPost = function(){
 	    // 创建导航
-	    var sections = $('h1[id^="section"]');
+	    var sections = $('h1');
 	    if(sections.length > 0){
 		    // <dd data-magellan-arrival="arrival"><a href="#arrival">前端学习</a></dd>
 		    var navi = $('<div> <div class="magellan-container" data-magellan-expedition="fixed"> <dl class="sub-nav"> <dd data-magellan-arrival="nav" class="nav-label"><a href="#nav">NAVI</a></dd> </dl> </div></div>');
 	    	$.each(sections, function(){
 	    		navi.find('dl').append($('<dd data-magellan-arrival="'+$(this).attr('id')+'"><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></dd>'));
 	    	});
-	    	$('.post-content').prepend(navi); 
+	    	$('.post-content').prepend(navi);
 			$(document).foundation().foundation('joyride', 'start');
 	    }
 	    $('.site-title').hover(function(){
