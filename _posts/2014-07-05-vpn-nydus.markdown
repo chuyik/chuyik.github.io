@@ -5,7 +5,6 @@ date:   2014-07-05 15:29:30
 categories: plan
 ---
 
-# 前言
 最近由于Google被咔嚓还有Goagent一片黄的情况下，对于非Google不可的我，为了不再让翻墙这些破事烦扰，决定还是买一个VPN来用。
 经过网上一番的搜寻和[软矿](https://www.x-berry.com/category/vpn/)上的评论后，我决定试试一个叫[Nydus][2]的VPN。
 
