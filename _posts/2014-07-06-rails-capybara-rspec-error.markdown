@@ -5,7 +5,12 @@ date:   2014-07-06 21:30:50
 categories: rails web development
 ---
 
-今天跟着Rails Tutorial，用最新版的Capybara和RSpec搭建测试框架时，出现了一些问题。
+[1]: http://railstutorial-china.org/chapter3.html#section-3-2
+[2]: http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec
+[3]: http://stackoverflow.com/questions/24011737/unable-to-setup-capybara-in-rails
+[4]: http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html
+
+今天跟着[Rails Tutorial][1]，用最新版的Capybara和RSpec搭建测试框架时，出现了一些问题。
 
 <!--more-->
 
@@ -55,7 +60,3 @@ categories: rails web development
 想要用visit方法？可以，但请在`spec/features`里写。
 
 
-[1]: http://railstutorial-china.org/chapter3.html#section-3-2
-[2]: http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec
-[3]: http://stackoverflow.com/questions/24011737/unable-to-setup-capybara-in-rails
-[4]: http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html
