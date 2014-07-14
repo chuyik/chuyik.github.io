@@ -289,9 +289,12 @@ module.exports = function (grunt) {
       dist: {
         options: {
           remote: '../',
-          branch: 'gh-pages',
           commit: true,
-          push: true
+          push: true,
+          // branch: 'gh-pages',
+          branch: 'master',
+          remote: 'git@github.com:chuyik/chuyik.github.io.git',
+          message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
         }
       }
     },
