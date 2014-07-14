@@ -1,0 +1,14 @@
+/* mixin for animation */
+/* line 4, ../sass/mixin.scss */
+.play-animate {
+  -webkit-animation-play-state: running !important;
+  animation-play-state: running !important;
+}
+
+/* line 9, ../sass/mixin.scss */
+.stop-animate {
+  -webkit-animation-duration: 0s !important;
+  animation-duration: 0s !important;
+  -webkit-animation-delay: 0s !important;
+  animation-delay: 0s !important;
+}

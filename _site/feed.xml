@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chuyik's blog</title>
+    <description>A place for keeping my footprints to a full-stack developer. Gonna to share something about my reflection, problem solution, tech tutorials and inspiration.</description>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Capybara2.4与RSpec-Rails3.0的冲突</title>
+        <description>
+&lt;p&gt;今天跟着&lt;a href=&quot;http://railstutorial-china.org/chapter3.html#section-3-2&quot;&gt;Rails Tutorial&lt;/a&gt;，用最新版的Capybara和RSpec搭建测试框架时，出现了一些问题。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;相关版本&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Rails: 4.1.1&lt;/li&gt;
+  &lt;li&gt;Capybara: 2.4.1&lt;/li&gt;
+  &lt;li&gt;RSpec-Rails: 3.0.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题描述&lt;/h2&gt;
+
+&lt;p&gt;在跟着&lt;a href=&quot;http://railstutorial-china.org/chapter3.html#section-3-2&quot;&gt;Rails Tutorial&lt;/a&gt;搭建好框架后，运行后报错：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+  uninitialized constant Capybara (NameError)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后我就纳闷了，记得之前学的时候，并没出现这问题。 在查了Capybara的&lt;a href=&quot;http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec&quot;&gt;文档&lt;/a&gt;之后，才发现还要在&lt;code&gt;spec_helper.rb&lt;/code&gt;加上&lt;code&gt;require 'capybara/rspec'&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;好吧，加就加吧，结果依然报错：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+  warning: loading in progress, circular require considered harmful
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;没办法，只好再请教Google，在StackOverFlow上看到了个&lt;a href=&quot;http://stackoverflow.com/questions/24011737/unable-to-setup-capybara-in-rails&quot;&gt;答案&lt;/a&gt;，情况恰好和我一样。
+因此我尝试修改了下&lt;code&gt;.rspec&lt;/code&gt;：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+--warnings
+--require spec_helper
+--require rails_helper
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;旧的错误没了，又来了个新的：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+  undefined method `visit' for #&amp;lt;RSpec::ExampleGroups::StaticPages::HomePage:0x5beedd8&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;我又对Capybara的&lt;a href=&quot;http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec&quot;&gt;文档&lt;/a&gt;端详了一番，才知道原来&lt;code&gt;requests&lt;/code&gt;这个文件夹名不能用了，要换成&lt;code&gt;features&lt;/code&gt;。
+换就换吧，还真没报错了。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;原因？&lt;/h2&gt;
+&lt;p&gt;在看完一篇题为&lt;a href=&quot;http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html&quot;&gt;&amp;lt;rspec-rails and capybara 2.0: what you need to know&amp;gt;&lt;/a&gt;的文章后，才知道究其原因，是因为Capybara 1.x与Rails自身的测试框架的函数名很容易搞晕新手。
+比如Capybara中叫&lt;code&gt;visit&lt;/code&gt;，而Rails的Testcase中叫&lt;code&gt;get&lt;/code&gt;，新手可能会写测试代码的时候，一不小心写了visit，又再一个不小心写了get，这样就很容易乱了。
+所以RSpec和Capybara决定联手另起炉灶，&lt;code&gt;spec/requests&lt;/code&gt;中的测试代码不再支持Capybara的函数。
+想要用visit方法？可以，但请在&lt;code&gt;spec/features&lt;/code&gt;里写。&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 07 Jul 2014 05:30:50 +0800</pubDate>
+        <link>http://yourdomain.com/rails/web/development/2014/07/07/rails-capybara-rspec-error/</link>
+        <guid isPermaLink="true">http://yourdomain.com/rails/web/development/2014/07/07/rails-capybara-rspec-error/</guid>
+      </item>
+    
+      <item>
+        <title>VPN推荐：Nydus</title>
+        <description>&lt;p&gt;最近由于Google被咔嚓还有Goagent一片黄的情况下，对于非Google不可的我，为了不再让翻墙这些破事烦扰，决定还是买一个VPN来用。&lt;/p&gt;
+
+&lt;p&gt;经过网上一番的搜寻和&lt;a href=&quot;https://www.x-berry.com/category/vpn/&quot;&gt;软矿&lt;/a&gt;上的评论后，我决定试试一个叫&lt;a href=&quot;http://www.ny-dus.info/&quot;&gt;Nydus&lt;/a&gt;的VPN。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;nydus&quot;&gt;为什么选择Nydus&lt;/h1&gt;
+&lt;p&gt;其实我之前早已用过它，因为听过它有7天试用，所以试过一次，当时觉得挺简单易用的，见图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chuyik-github-io.qiniudn.com/nydus.png&quot; alt=&quot;Nydus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;选择它之前，我比对了其他同类VPN。发现普遍价格有点高，而且有什么流量限制、在线终端数限制等。&lt;/p&gt;
+
+&lt;p&gt;而Nydus应该算比较厚道了，无限制流量、5个在线终端，很好地满足我的需求。&lt;/p&gt;
+
+&lt;p&gt;至于价格，和其他比也不算贵，20元一个月，200元一年。&lt;/p&gt;
+
+&lt;p&gt;最重要的是，评价好像比较好。所以我选择了它。&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;使用情况&lt;/h1&gt;
+&lt;p&gt;半个月使用下来，稳定度我觉得还是可以接受的，特别是用SwitchySharp的方式来连接（见文末）。&lt;/p&gt;
+
+&lt;p&gt;网站访问速度略快。&lt;/p&gt;
+
+&lt;p&gt;至于线路，其实除了日本线路以外，其他都不好使。美国线路虽然比较多，但是不好连，而且网页访问速度也不及日本线路（广州电信）。&lt;/p&gt;
+
+&lt;p&gt;所以综合来说，这个VPN我还是比较推荐的。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;附：连接方式介绍&lt;/h1&gt;
+&lt;p&gt;Nydus官网不没有完全展示他们所有支持的连接方式，下面我总结一下。&lt;/p&gt;
+
+&lt;h2 id=&quot;pc&quot;&gt;PC端&lt;/h2&gt;
+&lt;p&gt;PC端连接方式主要有三种，分别是客户端、拨号、SwitchySharp。
+各有利弊。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;1. 客户端&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;利&lt;/code&gt;：很直观易用，直接&lt;a href=&quot;http://www.ny-dus.info/download&quot;&gt;下载exe&lt;/a&gt;  安装，输入账号密码即可使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;弊&lt;/code&gt;：连接和关闭连接的时候，电脑会有点卡。有时会中断重连。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;2. 拨号&lt;/h3&gt;
+&lt;p&gt;配置地址&lt;a href=&quot;http://forum.nydus.co/forum.php?mod=viewthread&amp;amp;tid=440&amp;amp;extra=page%3D1&quot;&gt;点我&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;利弊就不说了，这种方式没太大作用&lt;/p&gt;
+
+&lt;h3 id=&quot;switchysharp&quot;&gt;3. SwitchySharp&lt;/h3&gt;
+&lt;p&gt;对于用惯Goagent的人来说，SwitchySharp应该是很熟悉了。不过我之前没预料到，Nydus还能用这种方式来连接。&lt;/p&gt;
+
+&lt;p&gt;配置地址&lt;a href=&quot;http://forum.nydus.co/forum.php?mod=viewthread&amp;amp;tid=2728&amp;amp;extra=page%3D1&quot;&gt;点我&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;利&lt;/code&gt;：稳定，快，配置也简单。还可以针对域名自定义规则。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;弊&lt;/code&gt;：有时要重新输入账号密码；本地的游戏、应用客户端不能用这种方式了，还好我不玩游戏。。。&lt;/p&gt;
+
+&lt;h2 id=&quot;android&quot;&gt;Android&lt;/h2&gt;
+&lt;p&gt;官网有个Android的VPN应用，但很遗憾，在Android4.4上好像不好使。
+所以我用了手机自带的配置方式。&lt;/p&gt;
+
+&lt;p&gt;其实配置很简单，去官网登陆账号后，&lt;a href=&quot;http://www.ny-dus.info/serverlist&quot;&gt;查看下服务器列表&lt;/a&gt;，找一个日本的服务器ip，就可以在手机上配置了。&lt;/p&gt;
+
+&lt;h2 id=&quot;ios&quot;&gt;IOS&lt;/h2&gt;
+&lt;p&gt;由于IOS有描述文件这个东西，所以只要用IOS访问一个&lt;a href=&quot;http://www.ny-dus.info/iosconfig&quot;&gt;网页&lt;/a&gt;下载配置文件就可以用了。&lt;/p&gt;
+
+&lt;h2 id=&quot;mac&quot;&gt;Mac&lt;/h2&gt;
+&lt;p&gt;Mac就不说了，么有这玩意。。。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Written with &lt;a href=&quot;https://stackedit.io/&quot;&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Sat, 05 Jul 2014 23:29:30 +0800</pubDate>
+        <link>http://yourdomain.com/software/2014/07/05/vpn-nydus/</link>
+        <guid isPermaLink="true">http://yourdomain.com/software/2014/07/05/vpn-nydus/</guid>
+      </item>
+    
+      <item>
+        <title>Milestones</title>
+        <description>&lt;p&gt;学习安排&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;可支配时间段&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;工作日：
+    &lt;ul&gt;
+      &lt;li&gt;中午12:30 - 13:00&lt;/li&gt;
+      &lt;li&gt;下午6:00 - 晚上11:00（除去食饭洗澡回家时间，3小时）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;周末：
+    &lt;ul&gt;
+      &lt;li&gt;早上9:00 - 晚上10:00（除去食饭洗澡回家时间，10小时）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;时间规划&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;工作日必做：前端学习、英语加强、健身锻炼&lt;/li&gt;
+  &lt;li&gt;周末：前端学习、英语加强、Web建站、建立应用、研究硬件，自由规划（清空本周待办清单）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;时间分配&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;工作日：
+    &lt;ul&gt;
+      &lt;li&gt;中午时间段：      英语加强&lt;/li&gt;
+      &lt;li&gt;下午6:00 - 8:00： 前端学习&lt;/li&gt;
+      &lt;li&gt;晚上9:00后：      自由规划&lt;/li&gt;
+      &lt;li&gt;洗澡前：          健身锻炼&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;周末：
+    &lt;ul&gt;
+      &lt;li&gt;早上起床后：      英语加强&lt;/li&gt;
+      &lt;li&gt;早上9:00 - 12:00：建立应用&lt;/li&gt;
+      &lt;li&gt;早上9:00 - 12:00：自由规划&lt;/li&gt;
+      &lt;li&gt;下午2:00 - 6:00： Web建站&lt;/li&gt;
+      &lt;li&gt;下午6:00 - 8:00： 前端学习&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;任务安排&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;7月：
+    &lt;ul&gt;
+      &lt;li&gt;前端学习: Angular JS&lt;/li&gt;
+      &lt;li&gt;英语加强: 阅读&lt;/li&gt;
+      &lt;li&gt;Web建站 : Rails Tutorial&lt;/li&gt;
+      &lt;li&gt;健身锻炼：基础（阶梯组、间隔组）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;8月：
+    &lt;ul&gt;
+      &lt;li&gt;前端学习: PhoneGap、Sencha等、Webworker/Websocket&lt;/li&gt;
+      &lt;li&gt;英语加强: 口语&lt;/li&gt;
+      &lt;li&gt;Web建站 : Web 开发敏捷之道&lt;/li&gt;
+      &lt;li&gt;建立应用: 选择技术、低保真构图&lt;/li&gt;
+      &lt;li&gt;健身锻炼：基础（超级组）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;9月：
+    &lt;ul&gt;
+      &lt;li&gt;前端学习: Javascript高级书籍&lt;/li&gt;
+      &lt;li&gt;英语加强: 听力&lt;/li&gt;
+      &lt;li&gt;Web建站 : AngularJS与Rails整合、&lt;em&gt;Unknown&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;建立应用: 功能实现&lt;/li&gt;
+      &lt;li&gt;健身锻炼：基础（波动阶段）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;10月：
+    &lt;ul&gt;
+      &lt;li&gt;前端学习: Javascript高级书籍&lt;/li&gt;
+      &lt;li&gt;英语加强: 写作&lt;/li&gt;
+      &lt;li&gt;Web建站 : &lt;em&gt;Unknown&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;建立应用: 润色、发布&lt;/li&gt;
+      &lt;li&gt;研究硬件: 购买硬件、简单入门&lt;/li&gt;
+      &lt;li&gt;健身锻炼：基础（波动阶段）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 30 Jun 2014 08:47:15 +0800</pubDate>
+        <link>http://yourdomain.com/plan/2014/06/30/milestones/</link>
+        <guid isPermaLink="true">http://yourdomain.com/plan/2014/06/30/milestones/</guid>
+      </item>
+    
+      <item>
+        <title>Ambition</title>
+        <description>&lt;p&gt;学习目标&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;前端学习&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Angular JS
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=i9MHigUZKEM&amp;amp;utm_source=feweekly&amp;amp;utm_campaign=issue14&amp;amp;utm_medium=web&quot;&gt;official&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.youku.com/playlist_show/id_19121683.html&quot;&gt;egghead.io或者百度网盘&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.kittencup.com/angularjs-%E4%B8%AD%E6%96%87%E5%85%8D%E8%B4%B9%E8%B6%85%E6%B8%85%E8%A7%86%E9%A2%91%E7%9B%AE%E5%BD%95/]&quot;&gt;kittencup&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://pan.baidu.com/&quot;&gt;ng-book&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PhoneGap
+    &lt;ul&gt;
+      &lt;li&gt;初始化开发环境（下载安卓SDK）&lt;/li&gt;
+      &lt;li&gt;等待“建立应用”完成&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sencha/JQuery Mobile/JQTouch
+    &lt;ul&gt;
+      &lt;li&gt;简单HelloWorld&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;WebWorker/Websocket
+    &lt;ul&gt;
+      &lt;li&gt;简单HelloWorld&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Javascript高级书籍（延后）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;英语加强&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;阅读
+    &lt;ul&gt;
+      &lt;li&gt;新托福iBT词汇分类突破&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://wordpress.lixiaolai.com/archives/3628.html&quot;&gt;TOEFL iBT – 新托福词汇专题突破&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;口语
+    &lt;ul&gt;
+      &lt;li&gt;英语中级口语&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://wordpress.lixiaolai.com/archives/category/everyone-can-use-english/toefl-listening-and-speaking&quot;&gt;新托福听说训练&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://home.xdf.cn/thread-262193-1-1.html&quot;&gt;李笑来老师托福185篇范文&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;听力
+    &lt;ul&gt;
+      &lt;li&gt;新托福听说训练（系列，共12篇）&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Unknown&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;写作
+    &lt;ul&gt;
+      &lt;li&gt;Thought and Knowledge: An Introduction to Critical Thinking 4th Edition by Diane F.Halpern&lt;/li&gt;
+      &lt;li&gt;A Plain English Handbook&lt;/li&gt;
+      &lt;li&gt;Building Great Senetences(Video Tutorial)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;健身锻炼&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;无器械健身
+    &lt;ul&gt;
+      &lt;li&gt;基础健身计划
+        &lt;ul&gt;
+          &lt;li&gt;每周四次，每次15分钟&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;web&quot;&gt;Web建站&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Rails Tutorial
+    &lt;ul&gt;
+      &lt;li&gt;看完教程&lt;/li&gt;
+      &lt;li&gt;将应用部署至Heroku&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Web 开发敏捷之道
+    &lt;ul&gt;
+      &lt;li&gt;跟着书本建立应用&lt;/li&gt;
+      &lt;li&gt;将应用部署至Heroku&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;建立应用&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;云同步目标达成应用
+    &lt;ul&gt;
+      &lt;li&gt;构思目的，功能&lt;/li&gt;
+      &lt;li&gt;选择技术&lt;/li&gt;
+      &lt;li&gt;低保真构图&lt;/li&gt;
+      &lt;li&gt;功能实现&lt;/li&gt;
+      &lt;li&gt;润色&lt;/li&gt;
+      &lt;li&gt;发布&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-4&quot;&gt;研究硬件（延后）&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Raspberry Pi
+    &lt;ul&gt;
+      &lt;li&gt;购买设备&lt;/li&gt;
+      &lt;li&gt;简单入门&lt;/li&gt;
+      &lt;li&gt;实现点击按钮即播报当天天气和提醒是否需要带伞&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section-5&quot;&gt;待定&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Processing&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 30 Jun 2014 08:47:15 +0800</pubDate>
+        <link>http://yourdomain.com/plan/2014/06/30/ambition/</link>
+        <guid isPermaLink="true">http://yourdomain.com/plan/2014/06/30/ambition/</guid>
+      </item>
+    
+      <item>
+        <title>First Post</title>
+        <description>&lt;!-- &lt;div&gt;
+	&lt;div class=&quot;magellan-container&quot; data-magellan-expedition=&quot;fixed&quot; data-options=&quot;destination_threshold:65;throttle_delay:0;&quot;&gt;
+	  &lt;dl class=&quot;sub-nav&quot;&gt;
+	    &lt;dd data-magellan-arrival=&quot;nav&quot; class='nav-label'&gt;&lt;a href=&quot;#nav&quot;&gt;NAVI&lt;/a&gt;&lt;/dd&gt;
+	    &lt;dd data-magellan-arrival=&quot;arrival&quot;&gt;&lt;a href=&quot;#arrival&quot;&gt;Arrival&lt;/a&gt;&lt;/dd&gt;
+	    &lt;dd data-magellan-arrival=&quot;destination&quot;&gt;&lt;a href=&quot;#destination&quot;&gt;Destination&lt;/a&gt;&lt;/dd&gt;
+	  &lt;/dl&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a name=&quot;arrival&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 data-magellan-destination=&quot;arrival&quot;&gt;Arrival&lt;/h3&gt;
+ --&gt;
+&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 23 Jun 2014 01:38:00 +0800</pubDate>
+        <link>http://yourdomain.com/misc/2014/06/23/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://yourdomain.com/misc/2014/06/23/welcome-to-jekyll/</guid>
+      </item>
+    
+  </channel>
+</rss>
