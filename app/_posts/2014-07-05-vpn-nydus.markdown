@@ -1,0 +1,77 @@
+---
+layout: post
+title:  "VPN推荐：Nydus"
+date:   2014-07-05 15:29:30
+tags: software
+category: software
+---
+最近由于Google被咔嚓还有Goagent一片黄的情况下，对于非Google不可的我，为了不再让翻墙这些破事烦扰，决定还是买一个VPN来用。   
+经过网上一番的搜寻和[软矿](https://www.x-berry.com/category/vpn/)上的评论后，我决定试试一个叫[Nydus](http://www.ny-dus.info/)的VPN。
+
+<!--more-->
+
+* toc
+{:toc}
+
+# 为什么选择Nydus
+其实我之前早已用过它，因为听过它有7天试用，所以试过一次，当时觉得挺简单易用的，见图。
+
+![Nydus][1]
+
+选择它之前，我比对了其他同类VPN。发现普遍价格有点高，而且有什么流量限制、在线终端数限制等。
+
+而Nydus应该算比较厚道了，无限制流量、5个在线终端，很好地满足我的需求。
+
+至于价格，和其他比也不算贵，20元一个月，200元一年。
+
+最重要的是，评价好像比较好。所以我选择了它。
+
+# 使用情况
+半个月使用下来，稳定度我觉得还是可以接受的，特别是用SwitchySharp的方式来连接（见文末）。
+
+网站访问速度略快。
+
+至于线路，其实除了日本线路以外，其他都不好使。美国线路虽然比较多，但是不好连，而且网页访问速度也不及日本线路（广州电信）。
+
+所以综合来说，这个VPN我还是比较推荐的。
+
+# 附：连接方式介绍
+Nydus官网不没有完全展示他们所有支持的连接方式，下面我总结一下。
+
+## PC端
+PC端连接方式主要有三种，分别是客户端、拨号、SwitchySharp。
+各有利弊。
+
+### 1. 客户端
+  `利`：很直观易用，直接[下载exe](http://www.ny-dus.info/download)  安装，输入账号密码即可使用。
+
+  `弊`：连接和关闭连接的时候，电脑会有点卡。有时会中断重连。
+
+### 2. 拨号
+  配置地址[点我](http://forum.nydus.co/forum.php?mod=viewthread&tid=440&extra=page%3D1)
+
+  利弊就不说了，这种方式没太大作用
+
+### 3. SwitchySharp
+  对于用惯Goagent的人来说，SwitchySharp应该是很熟悉了。不过我之前没预料到，Nydus还能用这种方式来连接。
+
+  配置地址[点我](http://forum.nydus.co/forum.php?mod=viewthread&tid=2728&extra=page%3D1)
+
+  `利`：稳定，快，配置也简单。还可以针对域名自定义规则。
+
+  `弊`：有时要重新输入账号密码；本地的游戏、应用客户端不能用这种方式了，还好我不玩游戏。。。
+
+## Android
+官网有个Android的VPN应用，但很遗憾，在Android4.4上好像不好使。
+所以我用了手机自带的配置方式。
+
+其实配置很简单，去官网登陆账号后，[查看下服务器列表](http://www.ny-dus.info/serverlist)，找一个日本的服务器ip，就可以在手机上配置了。
+
+## IOS
+由于IOS有描述文件这个东西，所以只要用IOS访问一个[网页](http://www.ny-dus.info/iosconfig)下载配置文件就可以用了。
+
+## Mac
+Mac就不说了，么有这玩意。。。
+
+  [1]: http://chuyik-github-io.qiniudn.com/nydus.png
+  [2]: http://www.ny-dus.info/

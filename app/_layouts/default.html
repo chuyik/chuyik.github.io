@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <!-- build:css({app,.tmp}) /css/main.css -->
+    <link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- <link rel="stylesheet" href="/css/pygments.css"> -->
+    <!-- endbuild -->
+
+    <!-- build:js(app) /js/head-scripts.js -->
+    <!-- Replace with a custom modernizer build for production -->
+    <!-- <script src="/_bower_components/modernizr/modernizr.js"></script> -->
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <section class="home">
+      <div class="pure-css"><span><!-- PURE CSS --></span></div>
+      <h1 class="title"><a href="/">{{ site.title }}</a></h1>
+      <div class="menu">
+      <small><a href="/category.html">CATEGORY</a></small> · <small><a href="/feed.xml" target="_blank">RSS</a></small> · <small><a href="/about.html">ABOUT</a></small>
+      </div>
+      {{ content | emojify }}
+    </section>
+
+    {% include footer.html %}
+    {% include scripts.html %}
+    {% include googleanalytics.html %}
+
+  </body>
+</html>

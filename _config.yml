@@ -1,16 +1,55 @@
-# Site settings
-title: Chuyik's blog
-email: your-email@domain.com
-description: "A place for keeping my footprints to a full-stack developer. Gonna to share something about my reflection, problem solution, tech tutorials and inspiration."
-baseurl: ""
-url: "http://yourdomain.com"
-username: chuyik
-
-excerpt_separator: <!--more-->
-
-# Build settings
-markdown: kramdown
-permalink: pretty
 encoding: utf-8
 
-exclude: ['node_modules', 'Gemfile*', 'Guardfile', 'sass', 'gulpfile.js', 'Gruntfile.js', 'package.json', 'bower.json', 'config.rb', 'screenshot']
+# Jekyll configuration precedence:
+# 1. Gruntfile task
+# 2. config.build.yml
+# 3. config.yml
+
+title: edc's blog
+description: A place for keeping my footprints to a full-stack developer. Gonna to share something about my reflection, problem solution, tech tutorials and inspiration.
+author:
+  name: Edward Chu
+  email: crazyzyt@gmail.com
+
+username: chuyik
+
+# settings for sitemap
+url: http://chuyik.github.io
+root: /
+
+# Grunt handles images and assets.
+exclude: ['img', 'css', 'js', 'fonts',
+          '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico', 'node_modules', '_scss']
+
+include: ['.htaccess']
+
+# _config.build.yml sets future and show_drafts to false on `grunt build`
+future: true
+show_drafts: true
+
+# Markdown library
+markdown: kramdown
+link_defs: _blank
+#   auto_ids: true
+#   footnote_nr: 1
+#   entity_output: as_char
+#   toc_levels: 1..6
+#   use_coderay: false
+#   coderay:
+#     coderay_wrap: div
+#     coderay_line_numbers: inline
+#     coderay_line_numbers_start: 1
+#     coderay_tab_width: 4
+#     coderay_bold_every: 10
+#     coderay_css: style
+
+pygments: true
+excerpt_separator: <!--more-->
+permalink: :year/:month/:day/:title.html
+paginate: 5
+paginate_path: "page:num"
+
+# plugins setting
+category_dir: category
+tag_dir: tag
+emoji_dir: /img/emojis

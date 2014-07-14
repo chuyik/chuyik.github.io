@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<blockquote class="">
+  <span><b>Tag</b>'s archive for <code class="code">{{ page.tag }}</code>,</span>
+  <span>totally {{ page.posts | size }} {% if page.posts.size > 1 %} articles {% else %} article {% endif %}.</span>
+</blockquote>
+
+<section class="posts">
+  {% for post in page.posts %}
+    {% include post_card.html %}
+  {% endfor %}
+</section>
