@@ -3,5 +3,6 @@
 # 2. config.build.yml
 # 3. config.yml
 
-future: false
+# future: false
 show_drafts: false
+timezone: Asia/Chongqing
