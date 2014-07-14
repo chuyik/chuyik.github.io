@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>edc's blog</title>
+    <description>A place for keeping my footprints to a full-stack developer. Gonna to share something about my reflection, problem solution, tech tutorials and inspiration.</description>
+    <link>http://chuyik.github.io//</link>
+    <atom:link href="http://chuyik.github.io//feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Rails 常见命令（待补充）</title>
+        <description>&lt;p&gt;由于Rails写的不多，经常忘记其开发时所需的命令。
+所以对Rails及其相关的一些常见命令做了整理，算是一份给自己看的cheat sheet吧。
+望温故而知新。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#rails&quot;&gt;Rails&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rspec&quot;&gt;Rspec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#heroku&quot;&gt;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rails&quot;&gt;Rails&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;rails new sample_app [--skip-test-unit] [--database=postgresql]&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;rake db:[create|migrate|rollback] [VERSION=0] [RAILS_ENV=test]&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;rails generate controller StaticPages home help --no-test-framework&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;rails destroy  controller FooBars baz quux&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;rails generate model Foo bar:string baz:integer&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;rails destroy  model Foo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;rspec&quot;&gt;Rspec&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;  rails generate rspec:install&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  rails generate integration_test static_pages&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;heroku&quot;&gt;Heroku&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;  heroku login&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  heroku create&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  gem &amp;#39;rails_12factor&amp;#39;, group: :production&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  heroku run rake db:migrate&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  heroku logs&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 23:29:30 +0800</pubDate>
+        <link>http://chuyik.github.io//2014/07/10/rails-command.html</link>
+        <guid isPermaLink="true">http://chuyik.github.io//2014/07/10/rails-command.html</guid>
+      </item>
+    
+      <item>
+        <title>Capybara2.4与RSpec-Rails3.0的冲突</title>
+        <description>
+&lt;p&gt;今天跟着&lt;a href=&quot;http://railstutorial-china.org/chapter3.html#section-3-2&quot;&gt;Rails Tutorial&lt;/a&gt;，用最新版的Capybara和RSpec搭建测试框架时，出现了一些问题。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;相关版本&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;问题描述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot;&gt;原因？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;相关版本&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Rails: 4.1.1&lt;/li&gt;
+  &lt;li&gt;Capybara: 2.4.1&lt;/li&gt;
+  &lt;li&gt;RSpec-Rails: 3.0.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题描述&lt;/h2&gt;
+
+&lt;p&gt;在跟着&lt;a href=&quot;http://railstutorial-china.org/chapter3.html#section-3-2&quot;&gt;Rails Tutorial&lt;/a&gt;搭建好框架后，运行后报错：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;uninitialized constant Capybara (NameError)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;然后我就纳闷了，记得之前学的时候，并没出现这问题。 在查了Capybara的&lt;a href=&quot;http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec&quot;&gt;文档&lt;/a&gt;之后，才发现还要在&lt;code&gt;spec_helper.rb&lt;/code&gt;加上&lt;code&gt;require 'capybara/rspec'&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;好吧，加就加吧，结果依然报错：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;warning: loading in progress, circular require considered harmful&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;没办法，只好再请教Google，在StackOverFlow上看到了个&lt;a href=&quot;http://stackoverflow.com/questions/24011737/unable-to-setup-capybara-in-rails&quot;&gt;答案&lt;/a&gt;，情况恰好和我一样。
+因此我尝试修改了下&lt;code&gt;.rspec&lt;/code&gt;：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;–warnings &lt;br /&gt;
+–require spec_helper &lt;br /&gt;
+–require rails_helper   &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;旧的错误没了，又来了个新的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;undefined method `visit’ for #&lt;rspec::examplegroups::staticpages::homepage:0x5beedd8&gt;&lt;/rspec::examplegroups::staticpages::homepage:0x5beedd8&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我又对Capybara的&lt;a href=&quot;http://rubydoc.info/github/jnicklas/capybara#Using_Capybara_with_RSpec&quot;&gt;文档&lt;/a&gt;端详了一番，才知道原来&lt;code&gt;requests&lt;/code&gt;这个文件夹名不能用了，要换成&lt;code&gt;features&lt;/code&gt;。
+换就换吧，还真没报错了。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;原因？&lt;/h2&gt;
+&lt;p&gt;在看完一篇题为&lt;a href=&quot;http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html&quot;&gt;&amp;lt;rspec-rails and capybara 2.0: what you need to know&amp;gt;&lt;/a&gt;的文章后，才知道究其原因，是因为Capybara 1.x与Rails自身的测试框架的函数名很容易搞晕新手。&lt;/p&gt;
+
+&lt;p&gt;比如Capybara中叫&lt;code&gt;visit&lt;/code&gt;，而Rails的Testcase中叫&lt;code&gt;get&lt;/code&gt;，新手可能会写测试代码的时候，一不小心写了visit，又再一个不小心写了get，这样就很容易乱了。&lt;/p&gt;
+
+&lt;p&gt;所以RSpec和Capybara决定联手另起炉灶，&lt;code&gt;spec/requests&lt;/code&gt;中的测试代码不再支持Capybara的函数。&lt;/p&gt;
+
+&lt;p&gt;想要用visit方法？可以，但请在&lt;code&gt;spec/features&lt;/code&gt;里写。&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 07 Jul 2014 05:30:50 +0800</pubDate>
+        <link>http://chuyik.github.io//2014/07/07/rails-capybara-rspec-error.html</link>
+        <guid isPermaLink="true">http://chuyik.github.io//2014/07/07/rails-capybara-rspec-error.html</guid>
+      </item>
+    
+      <item>
+        <title>VPN推荐：Nydus</title>
+        <description>&lt;p&gt;最近由于Google被咔嚓还有Goagent一片黄的情况下，对于非Google不可的我，为了不再让翻墙这些破事烦扰，决定还是买一个VPN来用。 &lt;br /&gt;
+经过网上一番的搜寻和&lt;a href=&quot;https://www.x-berry.com/category/vpn/&quot;&gt;软矿&lt;/a&gt;上的评论后，我决定试试一个叫&lt;a href=&quot;http://www.ny-dus.info/&quot;&gt;Nydus&lt;/a&gt;的VPN。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#nydus&quot;&gt;为什么选择Nydus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;使用情况&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;附：连接方式介绍&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#pc&quot;&gt;PC端&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-2&quot;&gt;1. 客户端&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot;&gt;2. 拨号&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#switchysharp&quot;&gt;3. SwitchySharp&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#android&quot;&gt;Android&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ios&quot;&gt;IOS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mac&quot;&gt;Mac&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;nydus&quot;&gt;为什么选择Nydus&lt;/h1&gt;
+&lt;p&gt;其实我之前早已用过它，因为听过它有7天试用，所以试过一次，当时觉得挺简单易用的，见图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chuyik-github-io.qiniudn.com/nydus.png&quot; alt=&quot;Nydus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;选择它之前，我比对了其他同类VPN。发现普遍价格有点高，而且有什么流量限制、在线终端数限制等。&lt;/p&gt;
+
+&lt;p&gt;而Nydus应该算比较厚道了，无限制流量、5个在线终端，很好地满足我的需求。&lt;/p&gt;
+
+&lt;p&gt;至于价格，和其他比也不算贵，20元一个月，200元一年。&lt;/p&gt;
+
+&lt;p&gt;最重要的是，评价好像比较好。所以我选择了它。&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;使用情况&lt;/h1&gt;
+&lt;p&gt;半个月使用下来，稳定度我觉得还是可以接受的，特别是用SwitchySharp的方式来连接（见文末）。&lt;/p&gt;
+
+&lt;p&gt;网站访问速度略快。&lt;/p&gt;
+
+&lt;p&gt;至于线路，其实除了日本线路以外，其他都不好使。美国线路虽然比较多，但是不好连，而且网页访问速度也不及日本线路（广州电信）。&lt;/p&gt;
+
+&lt;p&gt;所以综合来说，这个VPN我还是比较推荐的。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;附：连接方式介绍&lt;/h1&gt;
+&lt;p&gt;Nydus官网不没有完全展示他们所有支持的连接方式，下面我总结一下。&lt;/p&gt;
+
+&lt;h2 id=&quot;pc&quot;&gt;PC端&lt;/h2&gt;
+&lt;p&gt;PC端连接方式主要有三种，分别是客户端、拨号、SwitchySharp。
+各有利弊。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;1. 客户端&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;利&lt;/code&gt;：很直观易用，直接&lt;a href=&quot;http://www.ny-dus.info/download&quot;&gt;下载exe&lt;/a&gt;  安装，输入账号密码即可使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;弊&lt;/code&gt;：连接和关闭连接的时候，电脑会有点卡。有时会中断重连。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;2. 拨号&lt;/h3&gt;
+&lt;p&gt;配置地址&lt;a href=&quot;http://forum.nydus.co/forum.php?mod=viewthread&amp;amp;tid=440&amp;amp;extra=page%3D1&quot;&gt;点我&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;利弊就不说了，这种方式没太大作用&lt;/p&gt;
+
+&lt;h3 id=&quot;switchysharp&quot;&gt;3. SwitchySharp&lt;/h3&gt;
+&lt;p&gt;对于用惯Goagent的人来说，SwitchySharp应该是很熟悉了。不过我之前没预料到，Nydus还能用这种方式来连接。&lt;/p&gt;
+
+&lt;p&gt;配置地址&lt;a href=&quot;http://forum.nydus.co/forum.php?mod=viewthread&amp;amp;tid=2728&amp;amp;extra=page%3D1&quot;&gt;点我&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;利&lt;/code&gt;：稳定，快，配置也简单。还可以针对域名自定义规则。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;弊&lt;/code&gt;：有时要重新输入账号密码；本地的游戏、应用客户端不能用这种方式了，还好我不玩游戏。。。&lt;/p&gt;
+
+&lt;h2 id=&quot;android&quot;&gt;Android&lt;/h2&gt;
+&lt;p&gt;官网有个Android的VPN应用，但很遗憾，在Android4.4上好像不好使。
+所以我用了手机自带的配置方式。&lt;/p&gt;
+
+&lt;p&gt;其实配置很简单，去官网登陆账号后，&lt;a href=&quot;http://www.ny-dus.info/serverlist&quot;&gt;查看下服务器列表&lt;/a&gt;，找一个日本的服务器ip，就可以在手机上配置了。&lt;/p&gt;
+
+&lt;h2 id=&quot;ios&quot;&gt;IOS&lt;/h2&gt;
+&lt;p&gt;由于IOS有描述文件这个东西，所以只要用IOS访问一个&lt;a href=&quot;http://www.ny-dus.info/iosconfig&quot;&gt;网页&lt;/a&gt;下载配置文件就可以用了。&lt;/p&gt;
+
+&lt;h2 id=&quot;mac&quot;&gt;Mac&lt;/h2&gt;
+&lt;p&gt;Mac就不说了，么有这玩意。。。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 05 Jul 2014 23:29:30 +0800</pubDate>
+        <link>http://chuyik.github.io//2014/07/05/vpn-nydus.html</link>
+        <guid isPermaLink="true">http://chuyik.github.io//2014/07/05/vpn-nydus.html</guid>
+      </item>
+    
+  </channel>
+</rss>

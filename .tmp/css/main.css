@@ -1,0 +1,984 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+/* line 24, ../../app/_scss/main.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+/* line 28, ../../app/_scss/main.scss */
+html {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+/* line 39, ../../app/_scss/main.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 44, ../../app/_scss/main.scss */
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+/* line 53, ../../app/_scss/main.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+/* line 71, ../../app/_scss/main.scss */
+audio,
+canvas,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+/* line 79, ../../app/_scss/main.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+/* line 89, ../../app/_scss/main.scss */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+/* line 97, ../../app/_scss/main.scss */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/**
+ * variables
+ */
+@font-face {
+  font-family: 'RobotoSlab';
+  src: url("../fonts/WebFont.eot");
+  src: url("../fonts/RobotoSlab-Regular-webfont.eot?iefix") format("eot"), url("../fonts/RobotoSlab-Regular-webfont.woff") format("woff"), url("../fonts/RobotoSlab-Regular-webfont.ttf") format("truetype"), url("../fonts/RobotoSlab-Regular-webfont.svg#webfont") format("svg");
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/Raleway-Regular-webfont.eot");
+  src: url("../fonts/Raleway-Regular-webfont.eot?iefix") format("eot"), url("../fonts/Raleway-Regular-webfont.woff") format("woff"), url("../fonts/Raleway-Regular-webfont.ttf") format("truetype"), url("../fonts/Raleway-Regular-webfont.svg#webfont") format("svg");
+}
+
+/**
+ * mixins
+ */
+/**
+ * overwrite default classes
+ */
+/* line 169, ../../app/_scss/main.scss */
+html {
+  font-family: "Raleway", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+/* line 172, ../../app/_scss/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "RobotoSlab", "Raleway", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  text-shadow: 1px 1px 3px #dbdbdb;
+}
+
+/* line 176, ../../app/_scss/main.scss */
+a {
+  color: #0096a4;
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  border-bottom: 1px dashed transparent;
+}
+/* line 181, ../../app/_scss/main.scss */
+a:hover {
+  border-bottom: 1px dashed #0096a4;
+}
+
+/* line 185, ../../app/_scss/main.scss */
+.code, p code {
+  padding: 2px 5px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background: rgba(102, 128, 153, 0.075);
+  color: #172025;
+  font-family: "Raleway", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+}
+
+/* line 194, ../../app/_scss/main.scss */
+blockquote, .blockquote, .post section > p:first-child {
+  background: #eee;
+  border-left: 10px solid #dbdbdb;
+  margin: 1em 10px;
+  padding: 1em;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/* line 201, ../../app/_scss/main.scss */
+.blockquote:before, .post section > p:first-child:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: .1em;
+  margin-right: .25em;
+  vertical-align: -.4em;
+}
+
+/* line 209, ../../app/_scss/main.scss */
+blockquote p, .blockquote p, .post section > p:first-child p {
+  display: inline;
+}
+
+/* line 212, ../../app/_scss/main.scss */
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+  color: #007482;
+}
+
+/* line 216, ../../app/_scss/main.scss */
+pre {
+  font-family: "Raleway", "Consolas", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.8em;
+  letter-spacing: 0.03em;
+  line-height: 120%;
+  padding: 1em 2em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #FAFAFA;
+}
+
+/**
+ * Inspired by Dave Perrett
+ * http://www.daveperrett.com/
+ */
+/* line 231, ../../app/_scss/main.scss */
+.seperator {
+  height: 3px;
+  position: relative;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFDBDBDB', endColorstr='#FFFFF6EF');
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #f7f7f5), color-stop(50%, #fffbed), color-stop(100%, #f7f7f5));
+  background: -webkit-linear-gradient(left, #f7f7f5, #fffbed, #f7f7f5);
+  background: -moz-linear-gradient(left, #f7f7f5, #fffbed, #f7f7f5);
+  background: -o-linear-gradient(left, #f7f7f5, #fffbed, #f7f7f5);
+  background: linear-gradient(left, #f7f7f5, #fffbed, #f7f7f5);
+}
+/* line 237, ../../app/_scss/main.scss */
+.seperator:before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #f7f7f5), color-stop(50%, #dbdbdb), color-stop(100%, #f7f7f5));
+  background: -webkit-linear-gradient(left, #f7f7f5, #dbdbdb, #f7f7f5);
+  background: -moz-linear-gradient(left, #f7f7f5, #dbdbdb, #f7f7f5);
+  background: -o-linear-gradient(left, #f7f7f5, #dbdbdb, #f7f7f5);
+  background: linear-gradient(left, #f7f7f5, #dbdbdb, #f7f7f5);
+}
+/* line 244, ../../app/_scss/main.scss */
+.seperator:after {
+  content: 'END';
+  position: absolute;
+  left: 45%;
+  top: -0.6em;
+  padding: 0 0.5em;
+  font-size: 0.8em;
+  color: #cacaca;
+  background: #f7f7f5;
+  text-shadow: 1px 1px 0px #fffbed, 0px 0px 2px #f7f7f5, 0px 2px 0px #fffbed;
+}
+
+/* line 257, ../../app/_scss/main.scss */
+.pagination {
+  margin: 0px auto;
+  padding: 0em 2em;
+  text-align: center;
+}
+
+/**
+ * Pure CSS GUI icons
+ *
+ * Note:
+ * Partial CSS Designed By Nicolas Gallagher.
+ * http://nicolasgallagher.com/pure-css-gui-icons/demo/
+ */
+/* line 270, ../../app/_scss/main.scss */
+.icon {
+  position: relative;
+  display: inline-block;
+  /* COMMENT ICON */
+  /* TAG ICON */
+  /* FOLDER ICON */
+  /* NAVI ICONS */
+}
+/* line 274, ../../app/_scss/main.scss */
+.icon a {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/* line 275, ../../app/_scss/main.scss */
+.icon a:link, .icon a:visited {
+  display: block;
+  border: 0;
+  padding-left: 20px;
+  color: #0096a4;
+}
+/* line 282, ../../app/_scss/main.scss */
+.icon a:hover, .icon a:focus, .icon a:active {
+  color: #007482;
+  background: transparent;
+}
+/* line 287, ../../app/_scss/main.scss */
+.icon a:before, .icon a:after {
+  margin: -8px 0 0;
+  background: #0096a4;
+}
+/* line 295, ../../app/_scss/main.scss */
+.icon:before, .icon:after, .icon a:before, .icon a:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+/* line 304, ../../app/_scss/main.scss */
+.icon.comment-icon a:before {
+  width: 16px;
+  height: 10px;
+  margin-top: -8px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+/* line 313, ../../app/_scss/main.scss */
+.icon.comment-icon a:after {
+  left: 8px;
+  border: 2px solid transparent;
+  border-top-color: #0096a4;
+  border-left-color: #0096a4;
+  margin-top: 2px;
+  background: transparent;
+}
+/* line 324, ../../app/_scss/main.scss */
+.icon.comment-icon a:active:before,
+.icon.comment-icon a:hover:before,
+.icon.comment-icon a:focus:before {
+  background: #007482;
+}
+/* line 331, ../../app/_scss/main.scss */
+.icon.comment-icon a:hover:before,
+.icon.comment-icon a:focus:after,
+.icon.comment-icon a:hover:after,
+.icon.comment-icon a:active:after {
+  border-top-color: #007482;
+  border-left-color: #007482;
+}
+/* line 339, ../../app/_scss/main.scss */
+.icon.tag-icon a:before {
+  left: 6px;
+  width: 9px;
+  height: 15px;
+  margin-top: -8px;
+  background: #dbdbdb;
+  /* css3 */
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-transform: rotate(-40deg);
+  -moz-transform: rotate(-40deg);
+  -ms-transform: rotate(-40deg);
+  -o-transform: rotate(-40deg);
+  transform: rotate(-40deg);
+}
+/* line 356, ../../app/_scss/main.scss */
+.icon.tag-icon a:after {
+  left: 7px;
+  width: 3px;
+  height: 3px;
+  margin-top: -4px;
+  background: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 369, ../../app/_scss/main.scss */
+.icon.tag-icon a:active:before,
+.icon.tag-icon a:hover:before,
+.icon.tag-icon a:focus:before {
+  background: #0096a4;
+}
+/* line 376, ../../app/_scss/main.scss */
+.icon.folder-icon a:before {
+  left: 4px;
+  width: 16px;
+  height: 12px;
+  margin-top: -6px;
+  /* css3 */
+  -webkit-border-bottom-right-radius: 1px;
+  -webkit-border-bottom-left-radius: 1px;
+  -moz-border-radius: 0 0 1px 1px;
+  border-radius: 0 0 1px 1px;
+  background: #dbdbdb;
+}
+/* line 389, ../../app/_scss/main.scss */
+.icon.folder-icon a:after {
+  left: 6px;
+  width: 6px;
+  height: 2px;
+  margin-top: -8px;
+  background: #dbdbdb;
+  /* css3 */
+  -webkit-border-top-right-radius: 1px;
+  -webkit-border-top-left-radius: 1px;
+  -moz-border-radius: 1px 1px 0 0;
+  border-radius: 1px 1px 0 0;
+}
+/* line 407, ../../app/_scss/main.scss */
+.icon.folder-icon a:hover:before,
+.icon.folder-icon a:focus:before,
+.icon.folder-icon a:active:before,
+.icon.folder-icon a:hover:after,
+.icon.folder-icon a:focus:after,
+.icon.folder-icon a:active:after {
+  background: #0096a4;
+}
+/* line 413, ../../app/_scss/main.scss */
+.icon.prev-icon, .icon.next-icon {
+  cursor: pointer;
+  top: -10px;
+  position: relative;
+}
+/* line 418, ../../app/_scss/main.scss */
+.icon.prev-icon a, .icon.next-icon a {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  position: relative;
+  top: 12px;
+  left: 8px;
+}
+/* line 425, ../../app/_scss/main.scss */
+.icon.prev-icon:hover a, .icon.next-icon:hover a {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  color: #eee !important;
+  margin-right: 90px;
+  -webkit-transform: translate(25px);
+  -moz-transform: translate(25px);
+  -ms-transform: translate(25px);
+  -o-transform: translate(25px);
+  transform: translate(25px);
+}
+/* line 432, ../../app/_scss/main.scss */
+.icon.prev-icon:before, .icon.next-icon:before {
+  background: #eee;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #0096a4;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+/* line 441, ../../app/_scss/main.scss */
+.icon.prev-icon:after, .icon.next-icon:after {
+  border: 6px solid transparent;
+  width: 0;
+  height: 0;
+  margin-top: 7px;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+/* line 449, ../../app/_scss/main.scss */
+.icon.prev-icon:hover:before, .icon.next-icon:hover:before {
+  content: '';
+  background: #0096a4;
+  border-radius: 30px;
+  width: 60px;
+  height: 30px;
+  margin-top: -5px;
+  margin-left: -5px;
+  border: 3px solid #eee;
+  -webkit-transform: translate(30px);
+  -moz-transform: translate(30px);
+  -ms-transform: translate(30px);
+  -o-transform: translate(30px);
+  transform: translate(30px);
+}
+/* line 461, ../../app/_scss/main.scss */
+.icon.prev-icon:hover:after, .icon.next-icon:hover:after {
+  content: '';
+  border: 8px solid transparent;
+  width: 0;
+  height: 0;
+  margin-top: 5px;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+/* line 472, ../../app/_scss/main.scss */
+.icon.prev-icon:after {
+  border-color: transparent #0096a4 transparent transparent;
+  margin-left: 3px;
+}
+/* line 477, ../../app/_scss/main.scss */
+.icon.prev-icon:hover:after {
+  border-color: transparent #0096a4 transparent transparent;
+  margin-left: -1px;
+}
+/* line 484, ../../app/_scss/main.scss */
+.icon.next-icon:after {
+  border-color: transparent transparent transparent #0096a4;
+  margin-left: 10px;
+}
+/* line 489, ../../app/_scss/main.scss */
+.icon.next-icon:hover:after {
+  border-color: transparent transparent transparent #0096a4;
+  margin-left: 100px;
+}
+
+/* line 496, ../../app/_scss/main.scss */
+.github-icon-svg {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+/* line 503, ../../app/_scss/main.scss */
+.emoji {
+  width: 1.5em;
+  height: 1.5em;
+  margin-top: -0.1em;
+}
+
+/**
+ * custom classes for page
+ */
+/* line 512, ../../app/_scss/main.scss */
+body {
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFF6EF', endColorstr='#FFD7D9F5');
+  background: -webkit-gradient(linear, 0% 80%, 100% 20%, color-stop(0%, #d7d9f5), color-stop(100%, #fff6ef));
+  background: -webkit-linear-gradient(0% 80%, #d7d9f5, #fff6ef);
+  background: -moz-linear-gradient(0% 80%, #d7d9f5, #fff6ef);
+  background: -o-linear-gradient(0% 80%, #d7d9f5, #fff6ef);
+  background: linear-gradient(0% 80%, #d7d9f5, #fff6ef);
+}
+
+/* line 517, ../../app/_scss/main.scss */
+.home, .site-footer, .post {
+  max-width: 40em;
+  padding: 1.5em 2em;
+}
+
+/* line 522, ../../app/_scss/main.scss */
+.home, .post {
+  min-height: 40em;
+  box-shadow: 0px 1px 10px #aaa;
+  background: #f7f7f5;
+}
+
+/* line 528, ../../app/_scss/main.scss */
+.home {
+  margin: 2em auto 0;
+}
+/* line 530, ../../app/_scss/main.scss */
+.home .pure-css {
+  text-align: right;
+}
+/* line 534, ../../app/_scss/main.scss */
+.home .pure-css span:before {
+  content: 'PURE CSS';
+  float: right;
+  color: #eee;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: -1em;
+  z-index: 10;
+  text-shadow: 1px 2px 6px white, 0 0 0 #494949, 1px -3px 3px #ececec;
+  -webkit-transform: rotate(30deg) translateX(20%) scale(0.8);
+  -moz-transform: rotate(30deg) translateX(20%) scale(0.8);
+  -ms-transform: rotate(30deg) translateX(20%) scale(0.8);
+  -o-transform: rotate(30deg) translateX(20%) scale(0.8);
+  transform: rotate(30deg) translateX(20%) scale(0.8);
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+/* line 549, ../../app/_scss/main.scss */
+.home .pure-css span:hover:before {
+  content: 'is AWESOME';
+  color: rgba(0, 150, 164, 0.4);
+  margin: 30px;
+  padding: 10px;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+/* line 558, ../../app/_scss/main.scss */
+.home .title {
+  text-align: center;
+  margin-bottom: 0;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/* line 563, ../../app/_scss/main.scss */
+.home .title:hover {
+  margin-bottom: 10px;
+}
+/* line 567, ../../app/_scss/main.scss */
+.home .title a {
+  letter-spacing: -1px;
+  color: #007482;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/* line 573, ../../app/_scss/main.scss */
+.home .title:after {
+  content: '. back to index';
+  position: absolute;
+  white-space: nowrap;
+  border: 4px solid transparent;
+  border-color: transparent transparent #007482 #007482;
+  color: #0096a4;
+  font-size: 10px;
+  margin: 3px 5px;
+  margin-left: -20px;
+  width: 0;
+  height: 0;
+  line-height: 0px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 588, ../../app/_scss/main.scss */
+.home .title:hover:after {
+  margin-left: 5px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+/* line 595, ../../app/_scss/main.scss */
+.home .menu {
+  text-align: center;
+  color: #0096a4;
+  border-bottom: 1px dashed #ccc;
+  margin-top: 0.1em;
+  padding-bottom: 0.5em;
+}
+/* line 602, ../../app/_scss/main.scss */
+.home .menu a {
+  margin: 0 3px;
+  -webkit-transition: color 0.3s, -webkit-transform 0.5s;
+  -moz-transition: color 0.3s, -moz-transform 0.5s;
+  -o-transition: color 0.3s, -o-transform 0.5s;
+  transition: color 0.3s, transform 0.5s;
+}
+/* line 606, ../../app/_scss/main.scss */
+.home .menu a:hover {
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+/* line 611, ../../app/_scss/main.scss */
+.home > section {
+  margin: 1.5em auto 0;
+}
+
+/* line 616, ../../app/_scss/main.scss */
+.site-footer {
+  max-width: 42em;
+  margin: 0 auto 1em;
+  text-align: right;
+  letter-spacing: -0.005em;
+  color: #797979;
+}
+/* line 622, ../../app/_scss/main.scss */
+.site-footer .author {
+  float: left;
+}
+/* line 626, ../../app/_scss/main.scss */
+.site-footer .rights small {
+  margin-left: 0.3em;
+}
+
+/* line 633, ../../app/_scss/main.scss */
+.posts article {
+  margin: 0em 1em 1em;
+  padding: 1.5em;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 3px #ddd;
+}
+/* line 150, ../../app/_scss/main.scss */
+.posts article header time {
+  float: left;
+  text-align: right;
+  padding: 10px;
+  color: #fffbed;
+  background: #dbdbdb;
+  width: 10%;
+}
+/* line 158, ../../app/_scss/main.scss */
+.posts article header h1 {
+  margin: 0px;
+  margin-left: 15%;
+  font-size: 1.5em;
+  padding: 10px 0 0 10px;
+}
+/* line 642, ../../app/_scss/main.scss */
+.posts article hr {
+  margin: 0.5em 0em;
+}
+/* line 645, ../../app/_scss/main.scss */
+.posts article section {
+  clear: left;
+  font-size: 0.9em;
+  margin-left: 15%;
+  padding-left: 10px;
+}
+/* line 651, ../../app/_scss/main.scss */
+.posts article footer {
+  text-align: right;
+}
+/* line 652, ../../app/_scss/main.scss */
+.posts article footer .folders {
+  float: left;
+}
+/* line 654, ../../app/_scss/main.scss */
+.posts article footer .folders a {
+  color: #dbdbdb;
+}
+/* line 656, ../../app/_scss/main.scss */
+.posts article footer .folders a:hover {
+  color: #0096a4;
+}
+
+/* line 150, ../../app/_scss/main.scss */
+.post header time {
+  float: left;
+  text-align: right;
+  padding: 10px;
+  color: #fffbed;
+  background: #dbdbdb;
+  width: 10%;
+}
+/* line 158, ../../app/_scss/main.scss */
+.post header h1 {
+  margin: 0px;
+  margin-left: 15%;
+  font-size: 1.5em;
+  padding: 10px 0 0 10px;
+}
+/* line 669, ../../app/_scss/main.scss */
+.post header h1 {
+  color: #0096a4;
+}
+/* line 672, ../../app/_scss/main.scss */
+.post header .folders {
+  margin-left: 16%;
+}
+/* line 676, ../../app/_scss/main.scss */
+.post section {
+  clear: left;
+  margin-bottom: 2em;
+}
+/* line 680, ../../app/_scss/main.scss */
+.post section > p:first-child {
+  margin-top: 1.5em;
+}
+/* line 684, ../../app/_scss/main.scss */
+.post section a {
+  font-weight: 700;
+  padding: 0 0.2em;
+  border-bottom: 1px dashed #C2C2C2;
+}
+/* line 689, ../../app/_scss/main.scss */
+.post section a:hover {
+  color: #fffbed;
+  background: #22b8c6;
+}
+
+@media (max-width: 600px) {
+  /* line 705, ../../app/_scss/main.scss */
+  .posts .post header h1 {
+    padding-left: 20px;
+  }
+  /* line 709, ../../app/_scss/main.scss */
+  .posts .post section {
+    width: 100%;
+    padding-top: 5px;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+@media (max-width: 500px) {
+  /* line 723, ../../app/_scss/main.scss */
+  .home .pure-css span:hover {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    padding: 0;
+  }
+  /* line 726, ../../app/_scss/main.scss */
+  .home .pure-css span:hover:after {
+    content: '!!';
+  }
+}
+@media (max-width: 480px) {
+  /* line 736, ../../app/_scss/main.scss */
+  .home {
+    padding: 1em 0em;
+    background: none;
+  }
+
+  /* line 741, ../../app/_scss/main.scss */
+  .posts article {
+    margin: 1em 0.5em;
+    padding: 1em;
+    background: #f7f7f5;
+  }
+
+  /* line 748, ../../app/_scss/main.scss */
+  .post {
+    margin: 1em 0.5em;
+    padding: 1em;
+  }
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+/* line 763, ../../app/_scss/main.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+/* line 772, ../../app/_scss/main.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+/* line 789, ../../app/_scss/main.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+/* line 802, ../../app/_scss/main.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+/* line 819, ../../app/_scss/main.scss */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+/* line 824, ../../app/_scss/main.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  /* line 851, ../../app/_scss/main.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 859, ../../app/_scss/main.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 863, ../../app/_scss/main.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 867, ../../app/_scss/main.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  /* line 876, ../../app/_scss/main.scss */
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 881, ../../app/_scss/main.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 886, ../../app/_scss/main.scss */
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  /* line 891, ../../app/_scss/main.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* line 895, ../../app/_scss/main.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 905, ../../app/_scss/main.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 911, ../../app/_scss/main.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
