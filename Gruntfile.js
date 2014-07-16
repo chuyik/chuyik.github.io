@@ -377,13 +377,31 @@ module.exports = function (grunt) {
     'concat',
     // 'autoprefixer:dist',
     'cssmin',
+    'usetheforce_on',
     'uglify',
+    'usetheforce_restore',
     'imagemin',
     'svgmin',
     'filerev',
     'usemin',
     'htmlmin'
     ]);
+
+  grunt.registerTask('usetheforce_on',
+   'force the force option on if needed',
+   function() {
+    if ( !grunt.option( 'force' ) ) {
+      grunt.config.set('usetheforce_set', true);
+      grunt.option( 'force', true );
+    }
+  });
+  grunt.registerTask('usetheforce_restore',
+    'turn force option off if we have previously set it',
+    function() {
+    if ( grunt.config.get('usetheforce_set') ) {
+      grunt.option( 'force', false );
+    }
+  });
 
   grunt.registerTask('deploy', [
     'check',
