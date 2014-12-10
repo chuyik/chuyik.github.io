@@ -1,0 +1,14 @@
+extends ../_layout
+
+block arcitle
+  article
+    header
+      h1 #{title}
+      p
+        time(pubdate, datetime="#{date}") #{date}
+    p.article-content
+      != yield
+    footer
+      p
+        small Creative Commons Attribution-ShareAlike License
+

@@ -1,0 +1,25 @@
+doctype
+html
+  head
+    include annoying_headers
+    title=title===titleSuffix ? title : title + ' | ' + titleSuffix
+
+    link(rel="stylesheet" href="assets/main.css")
+    script(src="assets/bundle.js")
+  body
+    div
+      div.leftbar
+        include nav
+
+      div.main
+        div.main-content
+          if current.path[0] === 'articles'
+            block arcitle
+          else
+            != yield
+
+      div.footer
+        div Powered by
+          a(style="padding: 0 0 0 3px", href="http://harpjs.com", target="_blank") Harp.js
+          small(style="margin:0 0 5px 7px")
+            a(style="color: #CCC;", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") view source code
