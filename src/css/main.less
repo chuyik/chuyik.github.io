@@ -2,6 +2,23 @@
 @import "global.less";
 
 /**
+ * util
+ */
+.invert {
+  background: #444;
+}
+.invert-link {
+  color: #CBCBCB;
+  text-shadow: #1D1D1D 0px 1px 0px;
+  &:visited {
+    color: #CBCBCB;
+  }
+  &:hover,&:focus {
+    color: lighten(#CBCBCB, 30%);
+  }
+}
+
+/**
  * animation
  */
 .fade-up-out {
@@ -25,7 +42,7 @@
   left: 0;
   bottom: 0;
   overflow: hidden;
-  max-width: 300px;
+  // max-width: 300px;
 }
 .main {
   position: absolute;
@@ -53,20 +70,59 @@
  * left
  */
 .avatar {
-  .img-responsive;
-  max-height: 133px;
-  border-radius: 50%;
-  margin: 10% auto 0;
+  display: inline;
+  margin: 10%;
+}
 
-  &:hover {
-    max-height: 166px;
-    margin: 5% auto 0;
+// Thanks to http://alexsblog.org/2014/10/18/css-tips-and-tricks-12-animated-flipping-card-without-javascript/
+.card{
+  perspective: 100;
+
+  &:hover > .sides {
+    transform: rotateY(180deg);
+  }
+  > .sides {
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .6s;
+    height: 133px;
+    max-width: 133px;
+
+    > .front, > .back {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      backface-visibility: hidden;
+      box-shadow: 0 1px 5px #A0A0A0;
+      border-radius: 50%;
+    }
+
+    > .front {
+      background: url(/assets/images/edc.jpg) no-repeat;
+      background-size: 100% 100%;
+      transform: rotateY(0deg);
+    }
+
+    > .back {
+      // background: url(/assets/images/edc.jpg) no-repeat;
+      // background-size: 100% 100%;
+      transform: rotateY(180deg);
+
+      > .back-content {
+        position: relative;
+        top: 45%;
+        text-align: center;
+      }
+    }
   }
 }
+
 .metto {
   color: #999;
   text-align: center;
-  margin: 10% 5% 0;
+  margin: 5% 8% 0;
 }
 .nav {
   list-style: none;
@@ -151,7 +207,7 @@
    * left
    */
   .avatar {
-    max-height: 100px;
+    margin: 20px;
   }
   .leftbar {
     width: 100%;
@@ -166,11 +222,8 @@
     box-shadow: none;
     margin: 10px auto;
   }
-  .avatar {
-    margin: 20px auto 0;
-  }
   .metto {
-    margin: 20px 5% 0;
+    margin: 0 5% 0;
   }
   .nav {
     text-align: center;
