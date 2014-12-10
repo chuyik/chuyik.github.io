@@ -13,7 +13,7 @@
     "browsersync": "browser-sync start --proxy 'localhost:9000' --files 'public/*, public/[articles,feed]/*, src/css/*, public/assets/*' --no-notify",
     "watch": "harp server & npm run watch-js & npm run browsersync",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "harp compile && cd www & git add . & git commit -m 'quick commit' & git push origin master"
+    "publish": "harp compile && cd www && git add . && git commit -m 'quick commit' && git push origin master"
   },
   "repository": {
     "type": "git",
