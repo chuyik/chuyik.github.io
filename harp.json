@@ -2,7 +2,7 @@
   "globals": {
     "title": "Edward Chu's Blog",
     "titleSuffix": "Edward Chu's Blog",
-    "description": "This is where I write things",
-    "url": "http://example.com"
+    "description": "A front-end focused blog.",
+    "url": "http://edwardchu.org"
   }
 }

@@ -1,4 +1,7 @@
-This blog is hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>, powered by <a href="http://harpjs.com/" target="_blank">Harp</a>.
+#About#
+My blog: <a href="http://edwardchu.org" target="_blank">edwardchu.org</a>
+
+It's hosted with Github Pages, powered by <a href="http://harpjs.com/" target="_blank">Harp</a>.
 
 #What I Used#
 
