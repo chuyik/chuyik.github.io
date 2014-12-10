@@ -1,11 +1,11 @@
-This blog is hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>, powered by <a href="http://harpjs.com/" target="_blank">harp.js</a>.
+This blog is hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>, powered by <a href="http://harpjs.com/" target="_blank">Harp</a>.
 
 #What I Used#
 
+- harp
+- bower
 - watchify
 - browsersync
-- harp.js
-- bower
 
 #Pros#
 - Any syntax you want `(less, ejs, md, coffee, less, sass...)`
