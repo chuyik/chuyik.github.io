@@ -1,11 +1,15 @@
 //- baidu
-script.
+script#bdhm.
   var _hmt = _hmt || [];
   (function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e18366090c703c986bb9172960f46513";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e18366090c703c986bb9172960f46513";
+    hm.id = 'bdhm_js';
+    hm.loaded = function(){
+      delete window._bdhm_loaded_e18366090c703c986bb9172960f46513;
+    }
+    var s = document.getElementById('bdhm');
+    s.parentNode.insertBefore(hm, s);
   })();
 
 //- google
