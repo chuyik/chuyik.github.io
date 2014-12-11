@@ -12,7 +12,7 @@
     "watch-reload": "browser-sync start --proxy 'localhost:9000' --files 'public/*, public/[articles,feed]/*, src/css/*, public/assets/*' --no-notify",
     "watch": "harp server & npm run watch-js & npm run watch-reload",
     "compile": "harp compile && uglify -s www/assets/bundle.js -o www/assets/bundle.js",
-    "commit": "cd www && git add . && git commit -m 'quick commit'",
+    "commit": "cd www && git add --all . && git commit -m 'quick commit'",
     "push": "cd www && git push origin master",
     "publish": "npm run compile && npm run commit && npm run push",
     "test": "echo 'Error: no test specified' && exit 1"
