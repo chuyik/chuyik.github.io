@@ -23,3 +23,4 @@ Thumbs.db
 bower_components
 node_modules
 /www
+public/assets/*.js
