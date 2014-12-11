@@ -59,6 +59,23 @@ function transitAnimate(data, callback, isCached, url) {
   }
 }
 
+function handleAnalytics() {
+  // send data to google analytics
+  var href = window.location.href;
+  if(href !== window.oldHref){
+    window.oldHref = href;
+    if(ga){
+      ga('set', 'location', window.location.href);
+      ga('send', 'pageview');
+    }
+    var bdhm = $('#bdhm').text();
+    if(bdhm){
+      $('#bdhm, #bdhm_js').remove();
+      $('head').append($('<script id="bdhm"/>').text(bdhm));
+    }
+  }
+}
+
 $(function() {
   var containerSel = '.main-content';
   $.pjax({
@@ -67,11 +84,10 @@ $(function() {
     show: transitAnimate,
     cache: false,
     storage: true,
-    allowFullHtml: true,
+    html: true,
     modifyData: function(data) {
       return $(data).find(containerSel).html();
-    },
-    callback: function() {}
+    }
   });
 
   $(containerSel).on('pjax.start', function(ev, xhr, pjax) {
@@ -79,6 +95,7 @@ $(function() {
   });
 
   $(containerSel).on('pjax.end', function(ev, xhr, pjax) {
+    handleAnalytics();
     progressJs().end();
   });
 });
