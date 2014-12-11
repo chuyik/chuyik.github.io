@@ -1,11 +1,12 @@
 doctype
 html
   head
-    include annoying_headers
+    include _annoying_headers
     title=title===titleSuffix ? title : title + ' | ' + titleSuffix
 
     link(rel="stylesheet" href="/assets/main.css")
     script(src="/assets/bundle.js")
+    include _statistics
   body
     div
       div.leftbar
@@ -19,11 +20,6 @@ html
             != yield
 
       div.footer
-        //- div Powered by
-        //-   a(style="padding: 0 0 0 3px", href="http://harpjs.com", target="_blank") Harp
-        //-   div(style="margin:0 0 5px 0")
-        //-     small
-        //-       a(style="color: #CCC;", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") Me. The Designer.
         div
           a(style="color: #AAA;", title="View Source Code", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") IMAO I design it myself.
           div(style="margin:0 0 5px 0")
