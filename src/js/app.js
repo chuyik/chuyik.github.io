@@ -1,7 +1,6 @@
-window.$ = window.$ || require('../../bower_components/jquery/dist/jquery.js');
-window.jQuery = window.$;
+window.jQuery = window.$ = require('../../bower_components/jquery/dist/jquery.js');
+window.nprogress = require('../../bower_components/nprogress/nprogress.js');
 require('../../bower_components/static-pjax/jquery.pjax.js');
-window.progressJs = window.progressJs || require('../../bower_components/progress.js/src/progress.js').progressJs;
 
 function handleNavArrow(url) {
   if ($(window).width() < 767) {
@@ -77,27 +76,37 @@ function handleAnalytics() {
 }
 
 $(function() {
-  var containerSel = '.main-content';
-  $.pjax({
-    selector: '[pjax]',
-    container: containerSel,
-    show: transitAnimate,
-    cache: false,
-    storage: true,
-    html: true,
-    modifyData: function(data) {
-      return $(data).find(containerSel).html();
-    }
-  });
+  function initPjax(selector, container){
+    $.pjax({
+      selector: selector,
+      container: container,
+      show: transitAnimate,
+      cache: false,
+      storage: true,
+      html: true,
+      modifyData: function(data) {
+        // debugger;
+        console.log(this.selector, this.container);
+        return $(data).find(this.container).html();
+      }
+    });
 
-  $(containerSel).on('pjax.start', function(ev, xhr, pjax) {
-    // progressJs().start().autoIncrease(4, 300);
-  });
+    $(container).on('pjax.start', function(ev, xhr, pjax) {
+      nprogress.start();
+    });
 
-  $(containerSel).on('pjax.end', function(ev, xhr, pjax) {
-    // handleAnalytics();
-    // progressJs().end();
+    $(container).on('pjax.end', function(ev, xhr, pjax) {
+      window.jsbinified= undefined;
+      // handleAnalytics();
+      nprogress.done();
+    });
+  }
 
-    window.jsbinified= undefined;
+  initPjax('[pjax]', '.main-content');
+  initPjax('[pjax-page]', '.article-content');
+
+  $(document).on('click', '[goback]', function() {
+    window.history.back();
+    return false;
   });
 });

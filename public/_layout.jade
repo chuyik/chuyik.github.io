@@ -2,7 +2,14 @@ doctype
 html
   head
     include _annoying_headers
-    title=title===titleSuffix ? title : title + ' | ' + titleSuffix
+    if (title === titleSuffix)
+      if public.articles._data[current.path[1]]
+        title= public.articles._data[current.path[1]].title + ' | ' + titleSuffix
+      else
+      title=title
+    else
+      title= title + ' | ' + titleSuffix
+    //- title=title===titleSuffix ? title : title + ' | ' + titleSuffix
 
     link(rel="stylesheet" href="/assets/main.css")
     script(src="/assets/bundle.js")

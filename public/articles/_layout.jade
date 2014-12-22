@@ -2,30 +2,34 @@ extends ../_layout
 
 block article
   article
-    pre=JSON.stringify(current)
-    pre=JSON.stringify(public.articles)
-    pre=title
+    //- pre=JSON.stringify(current)
+    //- pre=JSON.stringify(public.articles)
+    //- pre=title
 
     header
-      h1 #{title}
-      time(pubdate, datetime="#{date}") #{date}
+      - var myCurrent = public.articles._data[current.path[1]]
+      - var path = '/' + current.path[0] + '/' + current.path[1]
+      h1
+        a(href=path + ".html", pjax-page) #{myCurrent.title}
+      time(pubdate, datetime="#{myCurrent.date}") #{myCurrent.date}
 
-    //- judge if it's an article rather than a page
-    if(public.articles._data[current.path.slice(-1)])
-      //- if article has some pages
-      if(public.articles[current.source])
-        nav
-          ul.pagination
-            for filename in public.articles[current.source]._contents
-              li
-                - var path = '/' + current.path.join('/')
-                - var url = path + '/' + filename
-                - var key = filename.substr(0, filename.lastIndexOf('.'))
-                - var title = public.articles[current.source]._data[key].title
-                a(href=url, pjax)= title
+    //- if article has some pages
+    if(public.articles[current.path[1]])
+      nav
+        ul.pagination
+          for filename in public.articles[current.path[1]]._contents
+            li
+              - var url = path + '/' + filename
+              - var key = filename.substr(0, filename.lastIndexOf('.'))
+              - var title = public.articles[current.path[1]]._data[key].title
+              a(href=url, pjax-page)= title
 
-    p.article-content
-      != yield
+    div.article-content
+      if current.path.length > 2
+        block page
+      else
+        != yield
+
     footer
       p
         small Creative Commons Attribution-ShareAlike License
