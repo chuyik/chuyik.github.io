@@ -1,9 +1,11 @@
 {
- "hello-world": {
-   "title": "Hello World",
-   "date": "2014-12-10"
- },
- "hello-brazil": {
-   "title": "Hello Brazil"
- }
+  "hello-world": {
+    "title": "Hello World",
+    "date": "2014-12-10"
+  },
+  "hack-collection": {
+    "title": "Hack Collection",
+    "date": "2014-12-14",
+    "draft": true
+  }
 }

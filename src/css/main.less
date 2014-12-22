@@ -18,18 +18,19 @@
     color: lighten(#CBCBCB, 30%);
   }
 }
+.a-block {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
 
 /**
  * animation
  */
 .fade-up-out {
-    opacity: 0;
-    transform: scale(0.8) translate3d(0, -10%, 0);
-    transition: all 450ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-}
-
-.easing-upward {
-    transition: all 450ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  opacity: 0;
+  transform: scale(0.8) translate3d(0, -10%, 0);
+  transition: all 450ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 
 /**
@@ -98,6 +99,7 @@
       backface-visibility: hidden;
       box-shadow: 0 1px 5px #A0A0A0;
       border-radius: 50%;
+      display: block;
     }
 
     > .front {
@@ -110,12 +112,60 @@
       // background: url(/assets/images/edc.jpg) no-repeat;
       // background-size: 100% 100%;
       transform: rotateY(180deg);
+      display: none\9;
 
       > .back-content {
-        position: relative;
-        top: 45%;
+        width: 100%;
+        height: 100%;
         text-align: center;
+        position: relative;
       }
+    }
+  }
+}
+
+.mailto {
+  position: relative;
+  top: 38px;
+  font-size: 85%;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
+}
+.back-arrow {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  // transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+
+  > span {
+    transition: transform 0.2s 0.2s cubic-bezier(0.63, 0.62, 0.48, 1.64);
+    background: #DBDBDB;
+    display: block;
+    width: 20px;
+    height: 3px;
+    margin: 5px auto;
+  }
+  // position: absolute;
+  // width: 100%;
+  // height: 100%;
+  // top: 0;
+  // left: 0;
+
+}
+.card:hover {
+  .back-arrow {
+    > .top {
+      transform: rotate3d(0, 0, -1, 45deg) translate3d(-2px, 4px, 0px);
+    }
+    > .meat {
+      transform: scale(0);
+    }
+    > .bottom {
+      transform: rotate3d(0, 0, 1, 45deg) translate3d(2px, -1px, 0px);
     }
   }
 }
@@ -163,6 +213,7 @@
     display: inline-block;
     width: 20px;
     margin: 0 10px;
+    vertical-align: middle;
   }
 }
 .svg-icon {
@@ -198,6 +249,29 @@
  */
 .article-content {
 
+}
+.jsbin {
+  margin: 0 20px;
+  background: #6E7577;
+  position: relative;
+  box-shadow: inset 0 0 10px #2D2D2D;
+}
+.jsbin-embed {
+  padding: 100px;
+  display: inline-block;
+  &:extend(.invert-link);
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .leftbar {
+    width: 30%;
+  }
+  .main {
+    left: 30%;
+  }
+  .footer {
+    width: 30%;
+  }
 }
 
 /**

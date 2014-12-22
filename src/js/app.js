@@ -46,14 +46,14 @@ function transitAnimate(data, callback, isCached, url) {
     callback && callback.call($this, data, isCached);
   } else {
     // start animation
-    $this.addClass('fade-up-out').removeClass('easing-upward');
+    $this.addClass('fade-up-out');
 
     handleNavArrow(url);
 
     // ending animation
     setTimeout(function() {
       $this.html(data);
-      $this.removeClass('fade-up-out').addClass('easing-upward');
+      $this.removeClass('fade-up-out');
       callback && callback.call($this, data, isCached);
     }, 450);
   }
@@ -91,11 +91,13 @@ $(function() {
   });
 
   $(containerSel).on('pjax.start', function(ev, xhr, pjax) {
-    progressJs().start().autoIncrease(4, 300);
+    // progressJs().start().autoIncrease(4, 300);
   });
 
   $(containerSel).on('pjax.end', function(ev, xhr, pjax) {
-    handleAnalytics();
-    progressJs().end();
+    // handleAnalytics();
+    // progressJs().end();
+
+    window.jsbinified= undefined;
   });
 });

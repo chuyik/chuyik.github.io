@@ -1,14 +1,31 @@
 extends ../_layout
 
-block arcitle
+block article
   article
+    pre=JSON.stringify(current)
+    pre=JSON.stringify(public.articles)
+    pre=title
+
     header
       h1 #{title}
-      p
-        time(pubdate, datetime="#{date}") #{date}
+      time(pubdate, datetime="#{date}") #{date}
+
+    //- judge if it's an article rather than a page
+    if(public.articles._data[current.path.slice(-1)])
+      //- if article has some pages
+      if(public.articles[current.source])
+        nav
+          ul.pagination
+            for filename in public.articles[current.source]._contents
+              li
+                - var path = '/' + current.path.join('/')
+                - var url = path + '/' + filename
+                - var key = filename.substr(0, filename.lastIndexOf('.'))
+                - var title = public.articles[current.source]._data[key].title
+                a(href=url, pjax)= title
+
     p.article-content
       != yield
     footer
       p
         small Creative Commons Attribution-ShareAlike License
-
