@@ -38,7 +38,7 @@ function handleNavArrow(url) {
   }, init ? 300 : 0);
 }
 
-function transitAnimate(data, callback, isCached, url) {
+function transitAnimate(data, callback, isCached, pjax) {
   var $this = this;
   if (isCached) {
     $this.html(data);
@@ -46,8 +46,7 @@ function transitAnimate(data, callback, isCached, url) {
   } else {
     // start animation
     $this.addClass('fade-up-out');
-
-    handleNavArrow(url);
+    handleNavArrow(pjax.options.url);
 
     // ending animation
     setTimeout(function() {
