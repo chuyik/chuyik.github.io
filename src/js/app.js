@@ -59,14 +59,20 @@ function transitAnimate(data, callback, isCached, url) {
 }
 
 function handleAnalytics() {
-  // send data to google analytics
   var href = window.location.href;
+  // disable local
+  if(/\/\/localhost/.test(window.location.href)){
+    return;
+  }
+  // prevent duplication
   if(href !== window.oldHref){
     window.oldHref = href;
+    // google analytics
     if(ga){
       ga('set', 'location', window.location.href);
       ga('send', 'pageview');
     }
+    // baidu
     var bdhm = $('#bdhm').text();
     if(bdhm){
       $('#bdhm, #bdhm_js').remove();
@@ -76,6 +82,7 @@ function handleAnalytics() {
 }
 
 $(function() {
+  // init pjax link
   function initPjax(selector, container){
     $.pjax({
       selector: selector,
@@ -85,26 +92,25 @@ $(function() {
       storage: true,
       html: true,
       modifyData: function(data) {
-        // debugger;
-        console.log(this.selector, this.container);
         return $(data).find(this.container).html();
       }
     });
 
     $(container).on('pjax.start', function(ev, xhr, pjax) {
-      nprogress.start();
+      window.nprogress.start();
     });
 
     $(container).on('pjax.end', function(ev, xhr, pjax) {
       window.jsbinified= undefined;
-      // handleAnalytics();
-      nprogress.done();
+      handleAnalytics();
+      window.nprogress.done();
     });
   }
 
   initPjax('[pjax]', '.main-content');
   initPjax('[pjax-page]', '.article-content');
 
+  // init go back button
   $(document).on('click', '[goback]', function() {
     window.history.back();
     return false;
