@@ -1,3 +1,14 @@
 for article, key in public.articles._data
-  h2
-    a(href="/articles/#{ key }.html",pjax)= article.title
+  if(!article.draft)
+    article(style="padding: 0 0 1em 0")
+      header
+        h1
+          a(href="/articles/#{ key }.html", pjax)= article.title
+          time(pubdate, datetime="#{article.date}") #{article.date}
+      div
+        - function excerpt(content) {
+          - if(content.indexOf("<!-- more -->") == -1) return content;
+          - else return content.split("<!-- more -->")[0];
+        - }
+
+        != excerpt(partial("articles/" + key))

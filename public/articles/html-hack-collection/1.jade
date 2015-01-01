@@ -1,0 +1,29 @@
+//- script(src='http://static.jsbin.com/js/embed.js')
+
+//- div.jsbin
+//-   a.jsbin-embed(href='http://jsbin.com/nofusoxogo/6/embed?output') Loading JS Bin...
+
+ol
+  li
+    div
+      h2 Editable Style
+      | Realtime CSS editing? Try:
+      style.editable-css(contenteditable='').
+        body {
+        color: blue;
+        }
+  li
+    h2 Editable HTML Elements
+    .editable-element(contenteditable='')
+      img(src='http://jsbin.com/favicon.ico')
+      | Try click on me and
+      b see what you got.
+  li
+    h2 Use your browser as Notepad
+    div
+      | Very much the same as the last one, but it's also interesting.
+      br
+      | Try to paste these code to a new tab in your browser:
+      pre.
+        \ndata:text/html,<body onload="document.querySelector('[contentEditable]').focus()"><h1>Notepad</h1><div contentEditable style="border: 1px solid #333; min-height: 300px"></div></body>
+

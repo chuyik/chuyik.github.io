@@ -1,6 +1,7 @@
 window.jQuery = window.$ = require('../../bower_components/jquery/dist/jquery.js');
 window.nprogress = require('../../bower_components/nprogress/nprogress.js');
 require('../../bower_components/static-pjax/jquery.pjax.js');
+require('./scroll.js');
 
 function handleNavArrow(url) {
   if ($(window).width() < 767) {
@@ -80,6 +81,15 @@ function handleAnalytics() {
   }
 }
 
+function articlePagination () {
+  var idx = location.href.lastIndexOf('/articles/');
+  if(idx < 0){
+    return;
+  }
+  var href = location.href.substr(idx);
+  $('.article-pager').find('[href="'+href+'"]').parent().addClass('active').siblings().removeClass('active');
+}
+
 $(function() {
   // init pjax link
   function initPjax(selector, container){
@@ -102,6 +112,7 @@ $(function() {
     $(container).on('pjax.end', function(ev, xhr, pjax) {
       window.jsbinified= undefined;
       handleAnalytics();
+      articlePagination();
       window.nprogress.done();
     });
   }
@@ -114,4 +125,5 @@ $(function() {
     window.history.back();
     return false;
   });
+
 });

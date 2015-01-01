@@ -13,16 +13,19 @@ div.avatar.card
             span.line.bottom
         //- a.mailto.invert-link(href="mailto:crazyzyt@gmail.com?subject=Hi :)") drop me an email
 
-div.metto
-  | Well, no posts yet. I will update it very soon. 2014-12-10
+div.motto
+  small.
+    The Sensory World Is An Illusion.
+    <br>
+    原来心就是那个揣度者
 
 ul.nav
-  li(class="#{current.path[0]==='index' ? 'nav-arrow': ''}")
-    a(href="/", pjax) Articles
+  li(class="#{(['index', 'articles'].indexOf(current.path[0]) >= 0) ? 'nav-arrow': ''}")
+    a(href="/", pjax) ARTICLES
   li(class="#{current.path[0]==='archive' ? 'nav-arrow': ''}")
-    a(href="/archive.html", pjax) Archive
+    a(href="/archive.html", pjax) ARCHIVE
   li(class="#{current.path[0]==='about' ? 'nav-arrow': ''}")
-    a(href="/about.html", pjax) About
+    a(href="/about.html", pjax) ABOUT
 
 div.social
   span

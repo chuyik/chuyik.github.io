@@ -1,6 +1,14 @@
 @import "mybootstrap.less";
 @import "global.less";
 @import (inline) "../../bower_components/nprogress/nprogress.css";
+@import (inline) "styles/railscasts.css";
+
+.hljs-comment, .hljs-javadoc, .hljs-shebang {
+  color: #E85A6A;
+  font-style: inherit;
+  font-size: 0.9em;
+}
+
 
 /**
  * util
@@ -36,6 +44,14 @@
 /**
  * grid
  */
+.abs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
 .leftbar {
   width: 25%;
   background: #F6F9FA;
@@ -51,11 +67,11 @@
   top: 0;
   left: 25%;
   width: 75%;
-  text-align: center;
   height: 100%;
   border: 1px solid #ccc\9;
   box-shadow: -5px 0 5px -5px #333;
   overflow: auto;
+  background: #FFF;
 }
 .footer {
   text-align: center;
@@ -75,6 +91,34 @@
   display: inline;
   margin: 10%;
 }
+.back-to-top {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  width: 26px;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  background: #666;
+  border-radius: 10px 0 0 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+
+  &.fadeout {
+    opacity: .5;
+
+    &:hover {
+      width: 36px;
+      height: 32px;
+      opacity: 1;
+      bottom: 30px;
+    }
+  }
+}
+
 
 // Thanks to http://alexsblog.org/2014/10/18/css-tips-and-tricks-12-animated-flipping-card-without-javascript/
 .card{
@@ -174,7 +218,7 @@
 
 }
 
-.metto {
+.motto {
   color: #999;
   text-align: center;
   margin: 5% 8% 0;
@@ -191,6 +235,8 @@
     border: 1px solid #eee;
     border-left-color: transparent;
     border-right-color: transparent;
+    letter-spacing: 0.4px;
+    font-size: 80%;
   }
 }
 
@@ -199,7 +245,8 @@
     content: '';
     position: absolute;
     vertical-align: middle;
-    border: 8px solid #F4F4F7;
+    // border: 8px solid #F4F4F7;
+    border: 8px solid #FFF;
     right: ~'-1px\9';
     right: -20px;
     border-color: transparent #F4F4F7 transparent transparent\9;
@@ -251,6 +298,9 @@
 /**
  * main
  */
+.main-content {
+  padding: 10px 30px;
+}
 .article-content {
 
 }
@@ -265,6 +315,129 @@
   display: inline-block;
   &:extend(.invert-link);
 }
+.toc {
+  float: right;
+  border: 1px solid #D3D3D3;
+  max-width: 240px;
+  margin: 0 0 10px 10px;
+  font-size: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  > a {
+    display: block;
+  }
+}
+h2[id^="section"] {
+  border-bottom: 1px dashed #D3D3D3;
+  // padding: 0 0 6px;
+  width: 80%;
+  // max-width: 500px;
+  -webkit-font-smoothing: auto;
+
+  > [href^="#section"]{
+    font-size: 12px;
+    color: @gray;
+    font-family: Calibri,Candara,Segoe,"Segoe UI",Optima,Arial,sans-serif;
+    margin: 0 0 0 5px;
+  }
+}
+.archives {
+  li {
+    list-style: none;
+  }
+  > li {
+    font-size: 2em;
+
+    > .year {
+      border-bottom: 1px dashed #D3D3D3;
+      margin: 0 0 10px;
+    }
+  }
+}
+.license {
+  font-size: 12px;
+  margin: 40px auto 10px;
+  padding: 3px 30px;
+  text-align: center;
+  border-radius: 4px;
+  text-shadow: none;
+  width: 230px;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    border-top: 1px solid #C8C8C8;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 12px;
+    z-index: -1;
+  }
+  > span {
+    background: #FFF;
+    padding: 0 8px;
+  }
+}
+.article-pager {
+  max-width: 500px;
+  margin: 0 0 1.4em 12px;
+
+  > span {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    margin: 0 0 5px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      border-radius: 20px;
+      padding: 0px;
+      border: 2px solid @brand-primary;
+      transition: all 0.1s;
+      float: left;
+      position: absolute;
+      top: 15px;
+      left: -8px;
+    }
+
+    > a {
+      position: relative;
+      display: block;
+      border: 1px solid #EEE;
+      border-radius: 8px;
+      padding: 4px 10px;
+      background: #F6F9FA;
+      text-shadow: none;
+      box-shadow: inset 0 1px 1px #FFF;
+      transition: none;
+    }
+
+    &:hover {
+      &:before {
+        padding: 3px;
+        top: 12px;
+        left: -11px;
+      }
+      > a {
+        color: #F6F9FA;
+        background: @brand-primary;
+        box-shadow: inset 0 1px 1px darken(@brand-primary, 10%);
+      }
+    }
+  }
+
+  > .active {
+    > a{
+      &:extend(.article-pager > span:hover > a);
+    }
+    &:before {
+      &:extend(.article-pager > span:hover:before);
+    }
+  }
+}
+
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
   .leftbar {
@@ -301,8 +474,9 @@
     left: 0;
     box-shadow: none;
     margin: 10px auto;
+    overflow: visible;
   }
-  .metto {
+  .motto {
     margin: 0 5% 0;
   }
   .nav {
@@ -327,5 +501,18 @@
   .footer {
     position: relative;
     width: 100%;
+  }
+  .back-to-top {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    &.fadeout {
+      font-size: 3em;
+      line-height: 70px;
+      &:hover {
+        width: 70px;
+        height: 70px;
+      }
+    }
   }
 }

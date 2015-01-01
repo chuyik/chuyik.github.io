@@ -8,7 +8,7 @@ rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
     for post, slug in public.articles._data
       item
         title= post.title
-        description <![CDATA[!{ partial(slug) }]]>
+        description <![CDATA[!{ partial("articles/" + slug) }]]>
         pubDate= new Date(post.date)
-        link #{ url }/articles/#{ slug }
-        guid(isPermaLink="true") #{ url }/articles/#{ slug }
+        link #{ url }/articles/#{ slug }.html
+        guid(isPermaLink="true") #{ url }/articles/#{ slug }.html

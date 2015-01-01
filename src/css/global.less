@@ -1,7 +1,8 @@
 @brand-primary: #0E81B3;
+@gray: #898989;
 
 * {
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 html{
@@ -9,7 +10,7 @@ html{
 
 body{
   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 200;
   line-height: 1.5;
   color: #444;
@@ -23,19 +24,58 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.02em;
-}
-
-h1{
-  font-size: 65px;
-  line-height: 1.2em;
-  border-bottom: #CCC solid 1px;
-  padding: 20px 0;
-}
-
-h3{
+  padding: 1.5em 0 6px;
+  margin: 0 0 1.4em;
+  text-align: start;
   font-weight: 300;
 }
 
-p{
-  // text-shadow: -1px -1px 0 #FFF,1px -1px 0 #FFF,-1px 1px 0 #FFF,1px 1px 0 #FFF;
+h1{
+  font-size: 2em;
+  line-height: 1.2em;
+  border-bottom: 1px solid #eee;
+  padding: 50px 0 10px;
+}
+
+p {
+  font-size: 18px;
+}
+
+p, pre, pre.prettyprint, blockquote {
+  margin: 0 0 1.1em;
+}
+
+pre {
+  text-shadow: none;
+  padding: 10px 20px;
+  text-align: start;
+  border: 0;
+  line-height: 1.45;
+  // color: #333;
+  // background-color: rgba(128, 128, 128, 0.05);
+  color: #DFDFDF;
+  background-color: #272323;
+}
+code, pre {
+  font-family: "Source Code Pro",monospace;
+  font-size: .9em;
+}
+blockquote {
+  border-left-width: 10px;
+  background-color: rgba(128, 128, 128, 0.05);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px 20px;
+  font-size: 1em;
+}
+.tree {
+  color: #333;
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+time {
+  font-size: 14px;
+  color: @gray;
+  margin: 0 0 0 10px;
+  letter-spacing: 0.5px;
 }

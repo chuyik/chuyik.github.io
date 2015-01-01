@@ -6,16 +6,21 @@
   "dependencies": {
   },
   "devDependencies": {
+    "harp": "^0.14.0",
+    "highlight.js": "^8.4.0"
   },
   "scripts": {
-    "watch-js": "watchify src/js/app.js -o public/assets/bundle.js -v",
-    "watch-reload": "browser-sync start --proxy 'localhost:9000' --files 'public/*, public/articles/*, src/css/*, public/assets/*' --no-notify",
-    "watch": "harp server & npm run watch-js & npm run watch-reload",
-    "compile": "harp compile && uglify -s www/assets/bundle.js -o www/assets/bundle.js",
-    "commit": "cd www && git add --all . && git commit -m 'quick commit'",
-    "push": "cd www && git push origin master",
-    "publish": "npm run compile && npm run commit && npm run push",
-    "test": "echo 'Error: no test specified' && exit 1"
+    "watch-js"     : "watchify src/js/app.js -o public/assets/bundle.js -v",
+    "watch-reload" : "browser-sync start --proxy 'localhost:9000' --files 'public/*, public/articles/**/*, src/css/*, public/assets/*' --no-notify",
+    "watch"        : "harp server & npm run watch-js & npm run watch-reload",
+    "serve"        : "node server/server & npm run watch-js & npm run watch-reload",
+    "compile"      : "harp compile && uglify -s www/assets/bundle.js -o www/assets/bundle.js",
+    "compile-node" : "node server/compile && uglify -s www/assets/bundle.js -o www/assets/bundle.js",
+    "commit"       : "cd www && git add --all . && git commit -m 'quick commit'",
+    "push"         : "cd www && git push origin master",
+    "publish"      : "npm run compile && npm run commit && npm run push",
+    "publish-node" : "npm run compile-custom && npm run commit & npm run push",
+    "test"         : "echo 'Error: no test specified' && exit 1"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
-#About#
-Source code of my blog: <a href="http://edwardchu.org" target="_blank">edwardchu.org</a>
+# Source code of my blog
+> <a href="http://edwardchu.org" target="_blank">edwardchu.org</a>
 
 
-#What I Used#
+## What's used
 
 - harp
 - bower
@@ -11,22 +11,23 @@ Source code of my blog: <a href="http://edwardchu.org" target="_blank">edwardchu
 - browsersync
 
 
-#Pros#
-- Any syntax you want `(less, ejs, md, coffee, less, sass...)`
+## The pros
+- Edit files with any syntax you want `(less, ejs, md, coffee, less, sass...)`
 - Autoreload and prefix css with file changes
 - Fast don't lie, goodbye to gruntfile
 
 
-#Check It Out#
+## Clone this blog
     git clone -b harp https://github.com/chuyik/chuyik.github.io
     npm install -g browser-sync watchify uglify bower harp
     bower install
 
 
-#One Command to Livereload#
+## Auto reload when files modified
     npm run watch
 
-
-#And Publish#
+## Build static HTML and upload
     npm run publish
 
+## Want to use harp as a lib?
+Harp could be used as a node module for enhancements and customization, but you need to install it via `npm install`, and run `npm run serve` instead of `npm run watch`.

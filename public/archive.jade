@@ -1,1 +1,27 @@
-p archive
+- function archive () {
+-   var archives = {};
+-   for(var k in public.articles._data){
+-     var data = public.articles._data[k];
+-     if(data.draft) {continue;}
+-     var d = new Date(data.date);
+-     archives[d.getFullYear()] = archives[d.getFullYear()] || {};
+-     archives[d.getFullYear()][d.getMonth() + 1] = archives[d.getFullYear()][d.getMonth() + 1] || {};
+-     archives[d.getFullYear()][d.getMonth() + 1][d.getDate()] = archives[d.getFullYear()][d.getMonth() + 1][d.getDate()] || {};
+-     archives[d.getFullYear()][d.getMonth() + 1][d.getDate()][k] = data;
+-   }
+-   return archives;
+- }
+
+ul.archives
+  for years, year in archive()
+    li
+      div.year= year
+      ul
+        for months, month in years
+          for days, day in months
+            for article, key in days
+              li
+                div
+                  p
+                    a(href="/articles/#{ key }.html", pjax)= article.title
+                    time(pubdate, datetime="#{article.date}")= article.date

@@ -6,30 +6,76 @@ block article
     //- pre=JSON.stringify(public.articles)
     //- pre=title
 
+    //
+      Header
+    //
     header
       - var myCurrent = public.articles._data[current.path[1]]
       - var path = '/' + current.path[0] + '/' + current.path[1]
       h1
         a(href=path + ".html", pjax-page) #{myCurrent.title}
-      time(pubdate, datetime="#{myCurrent.date}") #{myCurrent.date}
+        time(pubdate, datetime="#{myCurrent.date}") #{myCurrent.date}
 
-    //- if article has some pages
+    //
+       Variables
+    //
+    - var titles = [];
+    - var tocified = tocify(yield);
+
+    //
+      Toc
+    //
+    if(titles.length > 2)
+      nav.toc
+        each title, i in titles
+          a(href="#section" + (i+1))= title
+
+    //
+      Pagination
+    //
     if(public.articles[current.path[1]])
-      nav
-        ul.pagination
-          for filename in public.articles[current.path[1]]._contents
-            li
-              - var url = path + '/' + filename
-              - var key = filename.substr(0, filename.lastIndexOf('.'))
-              - var title = public.articles[current.path[1]]._data[key].title
-              a(href=url, pjax-page)= title
+      nav.article-pager
+        for filename in public.articles[current.path[1]]._contents
+          - var url = path + '/' + filename
+          - var key = filename.substr(0, filename.lastIndexOf('.'))
+          - var _title = public.articles[current.path[1]]._data[key].title
+          span(class=title === _title ? 'active' : '')
+            a(href=url, pjax-page)= _title
 
+    //- if(public.articles[current.path[1]])
+    //-   nav.pagination
+    //-     for filename in public.articles[current.path[1]]._contents
+    //-       - var url = path + '/' + filename
+    //-       - var key = filename.substr(0, filename.lastIndexOf('.'))
+    //-       - var title = public.articles[current.path[1]]._data[key].title
+    //-       a(href=url, pjax-page)= title
+    //
+      Article Content
+    //
     div.article-content
       if current.path.length > 2
         block page
       else
-        != yield
+        != tocified
 
+    //
+      Footer
+    //
     footer
-      p
-        small Creative Commons Attribution-ShareAlike License
+      div.license
+        span
+          a(style="color: #444", href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/", target="_blank") CC BY-NC-SA 3.0 License
+
+    //
+      Inline Function
+    //
+    - function tocify(str) {
+    -   var regex = /<h2>(.+?)<\/h2>/g;
+    -   var i = 0;
+    -   str = str.replace(regex, function(src, captured){
+    -      i++;
+    -      titles.push(captured);
+    -      return '<h2 id="section'+ (i) +'">' + captured + '</h2>';
+    -   });
+    -   return str;
+    - }

@@ -6,7 +6,7 @@ html
       if public.articles._data[current.path[1]]
         title= public.articles._data[current.path[1]].title + ' | ' + titleSuffix
       else
-      title=title
+      title= title
     else
       title= title + ' | ' + titleSuffix
     //- title=title===titleSuffix ? title : title + ' | ' + titleSuffix
@@ -14,21 +14,21 @@ html
     link(rel="stylesheet" href="/assets/main.css")
     script(src="/assets/bundle.js")
     include _analytics
-  body
-    div
-      div.leftbar
-        include nav
+  body.abs
+    div.leftbar
+      include nav
 
-      div.main
-        div.main-content
-          if current.path[0] === 'articles'
-            block article
-          else
-            != yield
+    div.main
+      div.main-content
+        if current.path[0] === 'articles'
+          block article
+        else
+          != yield
 
-      div.footer
-        div
-          a(style="color: #AAA;", title="View Source Code", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") IMAO I design it myself.
-          div(style="margin:0 0 5px 0")
-            small(style="color: #CCC;") Powered by
-              a(style="color: #CCC; padding: 0 0 0 3px", href="http://harpjs.com", target="_blank") Harp
+    div.footer
+      div.back-to-top ^
+      div
+        a(style="color: #AAA;", title="View Source Code", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") IMAO I design it myself.
+        div(style="margin:0 0 5px 0")
+          small(style="color: #CCC;") Powered by
+            a(style="color: #CCC; padding: 0 0 0 3px", href="http://harpjs.com", target="_blank") Harp
