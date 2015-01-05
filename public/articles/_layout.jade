@@ -9,12 +9,12 @@ block article
     //
       Header
     //
-    header
+    header.article-header
       - var myCurrent = public.articles._data[current.path[1]]
       - var path = '/' + current.path[0] + '/' + current.path[1]
       h1
         a(href=path + ".html", pjax-page) #{myCurrent.title}
-        time(pubdate, datetime="#{myCurrent.date}") #{myCurrent.date}
+      time(pubdate, datetime="#{myCurrent.date}") #{myCurrent.date}
 
     //
        Variables
