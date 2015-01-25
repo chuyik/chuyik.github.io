@@ -41,8 +41,8 @@ p {
   font-size: 18px;
 }
 
-p, pre, pre.prettyprint, blockquote {
-  margin: 0 0 1.1em;
+p, blockquote {
+  margin: 0.5em 0 1.5em;
 }
 
 pre {
@@ -55,6 +55,7 @@ pre {
   // background-color: rgba(128, 128, 128, 0.05);
   color: #DFDFDF;
   background-color: #272323;
+  margin: 0 0 3em;
 }
 code, pre {
   font-family: "Source Code Pro",monospace;
@@ -78,4 +79,15 @@ time {
   color: @gray;
   margin: 0 0 0 10px;
   letter-spacing: 0.5px;
+}
+
+// Helper
+.hide {
+  display: none !important;
+}
+.hideout {
+  opacity: 0;
+}
+.showin {
+  opacity: 1;
 }

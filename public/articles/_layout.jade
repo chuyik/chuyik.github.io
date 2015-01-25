@@ -19,16 +19,19 @@ block article
     //
        Variables
     //
-    - var titles = [];
-    - var tocified = tocify(yield);
+    - var titles = [], tocified = tocify(yield);
 
     //
       Toc
     //
-    if(titles.length > 2)
+    if(titles.length > 0)
       nav.toc
-        each title, i in titles
-          a(href="#section" + (i+1))= title
+        each title in titles
+          a(href="#" + title.id)= title.text
+          if(title.subtitles.length)
+            div
+              each subtitle in title.subtitles
+                a(href="#" + subtitle.id)= subtitle.text
 
     //
       Pagination
@@ -69,13 +72,31 @@ block article
     //
       Inline Function
     //
-    - function tocify(str) {
-    -   var regex = /<h2>(.+?)<\/h2>/g;
-    -   var i = 0;
-    -   str = str.replace(regex, function(src, captured){
-    -      i++;
-    -      titles.push(captured);
-    -      return '<h2 id="section'+ (i) +'">' + captured + '</h2>';
+    - function tocify(html) {
+    -   var regex = /<h([2|3])>(.+?)<\/h[2|3]>|<a href="(.+?)">.+?<\/a>/g;
+    -   var i = 0, j = 0;
+    -   var title, subtitle, id;
+    -   html = html.replace(regex, function(matchStr, level, text, href){
+    -     if(level === '2'){
+    -       id = 'section' + i;
+    -       title = {id: id, text: text, subtitles: []};
+    -       titles.push(title);
+    -       i++;
+    -       j = 0;
+    -     }else if(level === '3'){
+    -       id = 'section' + i + '_' + j;
+    -       subtitle = {id: id, text: text};
+    -       title.subtitles.push(subtitle);
+    -       j++;
+    -     }else{
+    -       // get A tag rather than H tag
+    -       // add target="_blank" to A tag
+    -       if(href.indexOf('://') > 0){
+    -         return matchStr.replace(/(.+?)>/, '$1 target="_blank">');
+    -       }
+    -       else{return matchStr;}
+    -     }
+    -     return matchStr.replace(/(.+?)>/, '$1 id="' + id + '">');
     -   });
-    -   return str;
+    -   return html;
     - }

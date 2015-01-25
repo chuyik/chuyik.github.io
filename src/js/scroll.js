@@ -4,7 +4,6 @@ function isDesktopView () {
 
 $(function() {
   var $scrollEl, $animateEl;
-  // var hideEls = $('.leftbar > :not(.nav), .nav > :not(.nav-arrow), .avatar > .sides');
 
   function setScrollEl () {
     if(isDesktopView()){
@@ -15,38 +14,15 @@ $(function() {
     }
   }
 
-  function initBackToTop () {
-    var $btn = $('.back-to-top');
-
-    $scrollEl.scroll(function(){
-      ( $(this).scrollTop() > 300 ) ? $btn.addClass('fadeout') : $btn.removeClass('fadeout');
-    });
-
-    $btn.off('click').on('click', function(){
-      // change hash without browser jumping
-      // var scrollV = $animateEl.scrollTop();
-      window.location.hash = '';
-      $animateEl.scrollTop(0);
-
-      $('.main').attr('style', '');
-      $('.leftbar').off('mouseover mouseout click');
-
-      // $animateEl.animate(
-      //   { scrollTop: 0 },
-      //   700,
-      //   function() {
-      //     // fix scroll won't work after scroll animation
-      //     $animateEl.scrollTop($animateEl.scrollTop());
-      //   }
-      // );
-    });
+  function scrollUnhide () {
+    $('.main, .main-content, .footer-float-btn').attr('style', '');
+    $('.leftbar').off('mouseover mouseout click');
   }
 
-  // var hideEls = $('.leftbar');
   var clickV;
   function scrollHide () {
     if(!isDesktopView()){
-      $('.back-to-top').attr('style', '');
+      $('.footer-float-btn').attr('style', '');
       return;
     }
     $scrollEl.scroll(function(){
@@ -56,7 +32,7 @@ $(function() {
       setTimeout(function() {
         if($scrollEl.scrollTop() > 300){
           if(clickV){
-            if(Math.abs(clickV - $scrollEl.scrollTop()) < 100){
+            if(Math.abs(clickV - $scrollEl.scrollTop()) < 200){
               return;
             }else{
               clickV = 0;
@@ -64,10 +40,10 @@ $(function() {
           }
           $('.main').css({'width': '99%', 'left': '1%', 'z-index': 1});
           $('.main-content').css({'max-width': '900px', 'margin': '0 auto'});
-          $('.back-to-top').css({'left': 0, 'border-radius': '0 10px 10px 0', 'z-index': 2});
+          $('.footer-float-btn').css({'left': 0, 'border-radius': '0 10px 10px 0', 'z-index': 2});
           $('.leftbar').off('mouseover').on('mouseover', function() {
             if(!clickV){
-              $('.main').css({'width': '95%', 'left': '5%'});
+              $('.main').css({'width': '92%', 'left': '8%'});
               $(this).css('cursor','pointer');
             }
           }).off('mouseout').on('mouseout', function() {
@@ -75,41 +51,62 @@ $(function() {
               $('.main').css({'width': '99%', 'left': '1%'});
             }
           }).off('click').on('click', function() {
-            $('.main, .main-content, .back-to-top').attr('style', '');
+            $('.main, .main-content, .footer-float-btn').attr('style', '');
             $(this).attr('style', '');
             clickV = $scrollEl.scrollTop();
-            console.log('clicked');
           });
         }else{
-          $('.main, .main-content, .back-to-top').attr('style', '');
-          $('.leftbar').off('mouseover mouseout click');
+          scrollUnhide();
         }
       }, 200);
     });
+  }
 
-    // hideEls.on('mouseover', function() {
-    //   hideEls.css('opacity', 1);
-    // });
+  function initBackToTop () {
+    var $btn = $('.back-to-top');
 
-    // hideEls.on('mouseout', function() {
-    //   hideEls.css('opacity', 0.01);
-    // });
+    $scrollEl.scroll(function(){
+      if ( $(this).scrollTop() > 300 ) {
+        $btn.addClass('fadeout');
+      } else {
+        $btn.removeClass('fadeout');
+      }
+    });
 
-    // var oldScrollV = $scrollEl.scrollTop();
-    // $scrollEl.scroll(function(){
-    //   setTimeout(function() {
-    //     var curScrollV = $scrollEl.scrollTop();
-    //     if(curScrollV > 300 && curScrollV > oldScrollV){
-    //       $('.main').css({width: '100%', 'left': 0, 'z-index': 1});
-    //       oldScrollV = curScrollV;
-    //     }else{
-    //       if((oldScrollV - curScrollV) > 200){
-    //         $('.main').attr('style', '');
-    //         oldScrollV = curScrollV;
-    //       }
-    //     }
-    //   }, 200);
-    // });
+    $btn.off('click').on('click', function(){
+      // change hash without browser jumping
+      window.location.hash = '';
+      $animateEl.scrollTop(0);
+
+      scrollUnhide();
+    });
+  }
+
+  function initNavToggle () {
+    var $btn = $('.navbar-toggle');
+
+    $scrollEl.scroll(function(){
+      if ( $(this).scrollTop() > 300 ) {
+        $btn.addClass('fadeout');
+      } else {
+        $btn.removeClass('fadeout');
+      }
+    });
+
+    var $menu = $('.toc').clone().attr('id', 'nav-menu').appendTo(".main-content").addClass('fixed').addClass('hideout');
+
+    var isOn = false;
+    // show menu
+    $btn.add($menu).off('mouseover click').on('mouseover click', function(ev){
+      if(ev.delegateTarget === $btn[0]){
+        isOn = true;
+      }
+      $menu.removeClass('hideout');
+    });
+    // hide menu
+    $btn.add($menu).off('mouseout').on('mouseout', function(){
+      $menu.addClass('hideout');
+    });
   }
 
   function initAnchorLinks () {
@@ -119,25 +116,14 @@ $(function() {
 
       var elmId = $(this).attr('href');
 
-      // change hash without browser jumping
-      // var scrollV = $scrollEl.scrollTop();
       window.location.hash = elmId.substr(1);
-      // $animateEl.scrollTop(scrollV);
-
-      // $animateEl.animate(
-      //   { scrollTop: $(elmId).offset().top },
-      //   700,
-      //   function() {
-      //     $el.animate(
-      //       { scrollTop: $el.scrollTop() - 20 }
-      //     );
-      //   });
     });
   }
 
   function init() {
     setScrollEl();
     initBackToTop();
+    // initNavToggle();
     initAnchorLinks();
     scrollHide();
   }
@@ -145,6 +131,11 @@ $(function() {
   $(window).resize(function() {
     $scrollEl.unbind('scroll');
     init();
+  });
+
+  // $(window).
+  $( window ).on('popstate', function() {
+    scrollUnhide();
   });
 
   init();

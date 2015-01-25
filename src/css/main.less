@@ -119,6 +119,38 @@
   }
 }
 
+.navbar-toggle {
+  &:extend(.back-to-top);
+  &.fadeout {
+    &:extend(.back-to-top.fadeout);
+    &:hover {
+      &:extend(.back-to-top.fadeout:hover);
+      bottom: 70px;
+    }
+  }
+  bottom: 65px;
+  padding: 8px 5px;
+
+  // We remove the `outline` here, but later compensate by attaching `:hover`
+  // styles to `:focus`.
+  &:focus {
+    outline: 0;
+  }
+
+  // Bars
+  .icon-bar {
+    display: block;
+    // width: 22px;
+    width: 80%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #FFF;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+}
+
 
 // Thanks to http://alexsblog.org/2014/10/18/css-tips-and-tricks-12-animated-flipping-card-without-javascript/
 .card{
@@ -329,11 +361,28 @@
   border: 1px solid #D3D3D3;
   max-width: 240px;
   margin: 0 0 10px 10px;
+  background: #FFF;
   font-size: 80%;
   padding: 10px;
   border-radius: 8px;
   > a {
     display: block;
+    color: #208D91;
+    font-weight: 700;
+  }
+  > div {
+    padding-left: 20px;
+    > a {
+      display: block;
+      color: #32AFB3;
+      font-size: 85%;
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
   }
 }
 h2[id^="section"] {
@@ -511,7 +560,7 @@ h2[id^="section"] {
     position: relative;
     width: 100%;
   }
-  .back-to-top {
+  .back-to-top, .navbar-toggle {
     position: fixed;
     width: 70px;
     height: 70px;

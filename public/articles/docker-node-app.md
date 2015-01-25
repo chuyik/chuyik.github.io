@@ -302,7 +302,9 @@ docker save ubuntu:14.10 > ubuntu_14.10.tar
 sudo docker ubuntu:14.10 < ubuntu_14.10.tar
 ```
 
-### 停止和删除所有容器（来自 [Fabio Rehm](https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers)）
+### 停止和删除所有容器
+> 来自 [Fabio Rehm](https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers)
+
 ```bash
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)

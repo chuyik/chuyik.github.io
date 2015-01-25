@@ -1,4 +1,13 @@
 {
+  "how-to-write-brackets-extension": {
+    "title": "如何编写一个 Brackets 插件",
+    "date": "2015-01-07"
+  },
+  "pouchdb-intro": {
+    "title": "PouchDB 全面介绍",
+    "date": "2015-01-07",
+    "draft": true
+  },
   "docker-node-app": {
     "title": "用 Docker 构建 NodeJS 应用",
     "date": "2014-12-30"

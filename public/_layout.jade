@@ -26,7 +26,13 @@ html
           != yield
 
     div.footer
-      div.back-to-top ^
+      //- div.navbar-toggle.footer-float-btn
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      div.back-to-top.footer-float-btn ^
+      //- <div class="back-to-top fadeout" style="left: 0px; border-radius: 0px 10px 10px 0px; z-index: 2;">^</div>
       div
         a(style="color: #AAA;", title="View Source Code", href="https://github.com/chuyik/chuyik.github.io/tree/harp", target="_blank") IMAO I design it myself.
         div(style="margin:0 0 5px 0")
