@@ -24,9 +24,9 @@ ga('send', 'pageview');</script></head><body class="abs"><div class="leftbar"><d
 <h2 id="section1">写一个简单插件</h2>
 <p>我们先从一个简单的插件入手，了解一些基本信息。</p>
 <h3 id="section2_0">本地创建一些文件</h3>
-<p>首先打开 Brackets，点击菜单的 <code>Help &gt; Show Extensions Folder</code>，打开插件所在的目录。进入 <code>user</code> 子目录，创建一个新文件夹，叫 <code>hello-my-world</code>，然后创建两个文件，分别名为 <code>main.js</code> 和 <code>package.json</code>。注意文件名是固定的。 </p>
+<p>首先打开 Brackets，点击菜单的 <code>Help &gt; Show Extensions Folder</code>，打开插件所在的目录。进入 <code>user</code> 子目录，创建一个新文件夹，叫 <code>hello-my-world</code>，然后创建两个文件，分别名为 <code>main.js</code> 和 <code>package.json</code>。注意文件名是固定的。</p>
 <p><code>main.js</code>: 插件启动时运行的代码文件<br><code>package.json</code>: 插件的元信息</p>
-<p> 最终文件结构如下：</p>
+<p>最终文件结构如下：</p>
 <pre class="tree">
 ├── hello-my-world/
 │   ├── main.js
@@ -34,7 +34,7 @@ ga('send', 'pageview');</script></head><body class="abs"><div class="leftbar"><d
 </pre>
 
 <h3 id="section2_1">package.json 基本结构</h3>
-<p>这个文件保存的是插件的元信息，包括插件名称、描述、作者信息、协议等。<br>内容如下： </p>
+<p>这个文件保存的是插件的元信息，包括插件名称、描述、作者信息、协议等。<br>内容如下：</p>
 <pre><code class="json">{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"hello-my-world"</span></span>,
   "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Hello My World"</span></span>,
